@@ -74,6 +74,7 @@ namespace API.Controllers
             if(computedHash[i] != hruser.PasswordHash[i]) return Unauthorized("Invalid password");
         }
 
+        //returning the HRUserDTO 
         return new HRUserDTO
         {
             Username = hruser.UserName,

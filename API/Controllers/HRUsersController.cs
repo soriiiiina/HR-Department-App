@@ -29,7 +29,7 @@ namespace API.Controllers
             return await hrusers;
         }
 
-        //endpoint to get a specific user by id --> we can spcify a root parameter 
+        //endpoint to get a specific user by id --> we can specify a root parameter 
         [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<HRUser>> GetHRUser(int id) 
