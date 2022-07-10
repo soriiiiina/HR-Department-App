@@ -1,0 +1,57 @@
+<mat-nav-list>
+    <div class="profile-card">
+        <div class="header" *ngIf="(loginregisterService.currentHRUser$ | async) as user">
+            <h2>Hello, {{user.username | titlecase}}</h2>
+            <!-- AICI MAI TREBE FACUT SA ARATE MAILU/CEVA DATE DESPRE USERUL LOGAT ACUM -->
+            <h4>sorinasuciu14@gmail.com</h4>
+        </div>
+        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Sorin's Profile Pic">
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <h2 matSubheader>Home</h2>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard">
+        <mat-icon>home</mat-icon>
+        Dashboard
+    </a>
+
+    <mat-divider></mat-divider>
+
+    <h2 matSubheader>Tools</h2>
+
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard/calendar">
+        <mat-icon>event</mat-icon>
+        Calendar
+    </a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard/tasks">
+        <mat-icon>check_circle</mat-icon>
+        Tasks
+    </a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard/arbore">
+        <mat-icon>home</mat-icon>
+        Arbore
+    </a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard/recruitment">
+        <mat-icon>table_chart</mat-icon>
+        Recruitment
+    </a>
+
+<mat-divider></mat-divider>
+
+<h2 matSubheader>Monitoring</h2>
+
+<a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard/hrmembers">
+    <mat-icon>supervisor_account</mat-icon>
+    HR Team Members
+</a>
+<a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard/lbgmembers">
+    <mat-icon>supervised_user_circle</mat-icon>
+    LBG Members
+</a>
+<a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard/coreteams">
+    <mat-icon>recent_actors</mat-icon>
+    CTs
+</a>
+
+</mat-nav-list>

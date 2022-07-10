@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output,EventEmitter } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { LoginregisterService } from '../_services/loginregister.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class RegisterComponent implements OnInit {
 
   model: any = {};
 
-  constructor(private loginRegisterService: LoginregisterService) { }
+  constructor(private loginRegisterService: LoginregisterService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -22,6 +23,7 @@ export class RegisterComponent implements OnInit {
       this.cancel();
     }, error => {
       console.log(error);
+      this.toastr.error(error.error)
     })
   }
 
