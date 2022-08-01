@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,6 +13,10 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { MembersModuleModule } from './members/members-module.module';
 import { ToastrModule } from 'ngx-toastr';
+import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
+import { ErrorInterceptor } from './_interceptors/error.interceptor';
+import { NotFoundPageComponent } from './errors/not-found-page/not-found-page.component';
+import { ServerErrorPageComponent } from './errors/server-error-page/server-error-page.component';
 
 
 @NgModule({
@@ -21,6 +25,9 @@ import { ToastrModule } from 'ngx-toastr';
     RegisterComponent,
     HomeComponent,
     CalendarComponent,
+    TestErrorsComponent,
+    NotFoundPageComponent,
+    ServerErrorPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +43,7 @@ import { ToastrModule } from 'ngx-toastr';
     })
   ],
   providers: [
-
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

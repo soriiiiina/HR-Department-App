@@ -33,11 +33,6 @@ export class HomeComponent implements OnInit {
     //the login method returns an observable (login was defined by me)
     this.loginregisterService.login(this.model).subscribe(response => {
       this.router.navigateByUrl('/dashboard')
-    }, error => {
-      console.log(error);
-      //seing the reason the login failed
-      this.toastr.error(error.error);
-      this.router.navigateByUrl('')
     })
   }
 

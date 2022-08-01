@@ -6,6 +6,9 @@ import { RecruitmentComponent } from './dashboard-tools/recruitment/recruitment.
 import { TasksComponent } from './dashboard-tools/tasks/tasks.component';
 import { DashboardLayoutComponent } from './dashboard/dashboard-layout/dashboard-layout.component';
 import { DashboardMainComponent } from './dashboard/dashboard-main/dashboard-main.component';
+import { NotFoundPageComponent } from './errors/not-found-page/not-found-page.component';
+import { ServerErrorPageComponent } from './errors/server-error-page/server-error-page.component';
+import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { HomeComponent } from './home/home.component';
 import { CoreteamsComponent } from './members/coreteams/coreteams.component';
 import { HrmembersDetailsComponent } from './members/hrmembers/hrmembers-details/hrmembers-details.component';
@@ -20,6 +23,14 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    path: 'not-found-page',
+    component: NotFoundPageComponent
+  },
+  {
+    path: 'server-error',
+    component: ServerErrorPageComponent
   },
 
   //preventing hijacking for all the routes 
@@ -74,6 +85,10 @@ const routes: Routes = [
       path: 'recruitment',
       component: RecruitmentComponent
     },
+    {
+      path: 'errors',
+      component: TestErrorsComponent
+    }
     ]
   },
     ]

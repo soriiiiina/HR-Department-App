@@ -1,0 +1,20 @@
+[
+  '{{repeat(5)}}',
+  {
+    FullName: '{{firstName("female")}}',
+    UserName: function(){ return this.FullName; },
+    StatusOrQuote: '{{lorem(1, "paragraphs")}}',
+    PhoneNumber: '{{phone("(xxx) xxx-xxxx")}}',
+    Faculty: '{{lorem(1, "paragraphs")}}',
+    DateOfBirth: '{{date(new Date(1950,0,1), new Date(1999, 11, 31), "YYYY-MM-dd")}}',
+    Created: '{{date(new Date(2019, 0, 1), new Date(2020,5,30), "YYYY-MM-dd")}}',
+    LastActive: '{{date(new Date(2020, 4, 1), new Date(2020,5,30), "YYYY-MM-dd")}}',
+    Photos: [
+        {
+          Url: function(num) {
+          return 'https://randomuser.me/api/portraits/women/' + num.integer(1,99) + '.jpg';
+        }
+      }
+    ]
+  }
+]

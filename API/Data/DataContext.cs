@@ -10,7 +10,7 @@ namespace API.Data
         {
         }
 
-        //we want to create a database set for the AppUser class 
+        //we want to create a database set for the HRUser class 
         //Users is a table
         public DbSet<HRUser> Users { get; set; }
     }
