@@ -1,1 +1,13 @@
-<p>hrmembers-list works!</p>
+<div class="d-flex form-inputs">
+    <input class="form-control" type="text" placeholder="Search any user...">
+    <i class="bx bx-search"></i>
+</div>
+
+
+    <br><br>
+
+<div class="row">
+    <div *ngFor="let hrmember of hrmembers$ | async" class="col-4">
+        <app-hrmember-card [hrmember]="hrmember"></app-hrmember-card>
+    </div>
+</div>

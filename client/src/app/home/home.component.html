@@ -1,41 +1,47 @@
-     <div *ngIf="(loginregisterService.currentHRUser$ | async) === null && !loggedIn">
-        <div>
-            <h1 style='text-align: center; margin-top: 50px;'>Log in</h1>
-            <form #loginForm="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)="login()" 
-            autocomplete="off">
-            <input 
-                name="username"
-                [(ngModel)]="model.username"
-                class="form-control mr-sm-2" 
-                type="text" 
-                placeholder="Username">
-            <input 
-                name="password"
-                [(ngModel)]="model.password"
-                class="form-control mr-sm-2" 
-                type="password" 
-                placeholder="Password">
-            <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Login</button>
-        </form>
-        </div>
-    
-      <div style="margin-top: 100px">
-        <div *ngIf="!registerMode" style='text-align: center;'>
-            <h1>Register here</h1>
-            <p class="lead">If you don't have an account, you just have to register</p>
-            <div class="text-center">
-                <button (click)="registerToggle()" class="btn btn-primary btn-lg mr-2">Register</button>
-                <button class="btn btn-info btn-lg">Learn more</button>
-            </div>
-        </div>
-    
-        <div *ngIf="registerMode" class="container">
-            <div class="row justify-content-center">
-                <div class="col-4">
-                    <app-register (cancelRegister)="cancelRegisterMethod($event)"></app-register>
+<!-- NEW LOGIN TEMPLATE -->
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-120">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-dark text-white" style="border-radius: 2rem;">
+                    <div class="card-body p-5 text-center">
+
+                        <div class="mb-md-5 mt-md-4 pb-5">
+
+                            <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+                            <p class="text-white-50 mb-5">Please enter your username and password!</p>
+
+                            <form #loginForm="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)="login()"
+                                autocomplete="off">
+                                <div class="form-outline form-white mb-4">
+                                    <input name="username" [(ngModel)]="model.username"
+                                        class="form-control form-control-lg" type="text" placeholder="username">
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input name="password" [(ngModel)]="model.password"
+                                        class="form-control form-control-lg" type="password" placeholder="password">
+                                </div>
+                                <button type="submit" class="btn btn-outline-light btn-lg px-5">Login</button>
+                            </form>
+                            <br>
+                            <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
+<!-- 
+                            <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                                <a href="#!" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
+                                <a href="#!" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
+                                <a href="#!" class="text-white"><i class="fab fa-google fa-lg"></i></a>
+                            </div> -->
+
+                        </div>
+
+                        <div>
+                            <p class="mb-3">Don't have an account? <a href="#!" routerLinkActive="list-item-active" routerLink="/register" class="text-white-50 fw-bold">Register now</a>
+                            </p>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
-     </div>
-     
+    </div>
+</section>

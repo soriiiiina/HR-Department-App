@@ -19,7 +19,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
   ],
   imports: [
     CommonModule,
-    DashboardSharedModule,
     RouterModule,
     MatSidenavModule,
     MatDividerModule,
@@ -27,11 +26,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     FlexLayoutModule,
     MatCardModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    DashboardSharedModule
   ],
   exports: [
     DashboardLayoutComponent,
-    DashboardMainComponent
+    DashboardMainComponent,
+    DashboardSharedModule
   ]
 })
 export class DashboardModule { }

@@ -12,6 +12,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
 import { RouterModule } from '@angular/router';
+import { HrmemberCardComponent } from './widgets/hrmember-card/hrmember-card.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { RouterModule } from '@angular/router';
     TableComponent,
     FooterComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    HrmemberCardComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,8 @@ import { RouterModule } from '@angular/router';
     TableComponent,
     FooterComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    HrmemberCardComponent,
   ]
 })
 export class DashboardSharedModule { }

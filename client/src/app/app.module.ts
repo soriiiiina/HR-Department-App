@@ -17,7 +17,9 @@ import { TestErrorsComponent } from './errors/test-errors/test-errors.component'
 import { ErrorInterceptor } from './_interceptors/error.interceptor';
 import { NotFoundPageComponent } from './errors/not-found-page/not-found-page.component';
 import { ServerErrorPageComponent } from './errors/server-error-page/server-error-page.component';
-
+import { DashboardSharedModule } from './dashboard-shared/dashboard-shared.module';
+import { HrmemberCardComponent } from './dashboard-shared/widgets/hrmember-card/hrmember-card.component';
+import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { ServerErrorPageComponent } from './errors/server-error-page/server-erro
     TestErrorsComponent,
     NotFoundPageComponent,
     ServerErrorPageComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -36,14 +39,19 @@ import { ServerErrorPageComponent } from './errors/server-error-page/server-erro
     BrowserAnimationsModule,
     FormsModule,
     BsDropdownModule.forRoot(),
+
     DashboardModule,
+    
     MembersModuleModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
-    })
+    }),
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

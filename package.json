@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "bootstrap-icons": "^1.9.1",
     "highcharts-angular": "^3.0.0"
   }
 }

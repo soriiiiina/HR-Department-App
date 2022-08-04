@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Member } from 'src/app/_models/member';
+import { MembersService } from 'src/app/_services/members.service';
 
 @Component({
   selector: 'app-hrmembers-list',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HrmembersListComponent implements OnInit {
 
-  constructor() { }
+  //am observable of the member array 
+  hrmembers$!: Observable<Member[]>;
+
+  constructor(private memberService: MembersService) { }
 
   ngOnInit(): void {
-  }
+    this.hrmembers$ = this.memberService.getMembers();
+      }
 
 }

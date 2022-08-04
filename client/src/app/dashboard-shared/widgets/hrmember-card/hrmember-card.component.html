@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-5 mb-4">
+            <div class="card" style="width: 17rem;">
+                <img src="{{hrmember.photoUrl || './assets/user.png'}}" alt="{{hrmember.username}}" class="card-img-top">
+                <div class="card-body">
+                    <h2 class="card-title">{{hrmember.fullName}}</h2>
+                    <h4 class="card-subtitle mb-2 text-muted">{{hrmember.username}}</h4>
+                    <p class="card-text">{{hrmember.statusOrQuote}}</p>
+
+                    <a href="#" class="btn mr-2"  routerLinkActive="list-item-active" 
+                    routerLink="/dashboard/hrmember/{{hrmember.username}}"><i class="fas fa-link">
+                    </i>See Profile</a>
+
+                    <a href="#" class="btn "><i class="fab fa-github"></i>Message</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

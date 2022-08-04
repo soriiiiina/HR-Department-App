@@ -13,9 +13,13 @@ import { HomeComponent } from './home/home.component';
 import { CoreteamsComponent } from './members/coreteams/coreteams.component';
 import { HrmembersDetailsComponent } from './members/hrmembers/hrmembers-details/hrmembers-details.component';
 import { HrmembersListComponent } from './members/hrmembers/hrmembers-list/hrmembers-list.component';
+import { HrmemeberEditComponent } from './members/hrmembers/hrmemeber-edit/hrmemeber-edit.component';
+import { ProfileEditComponent } from './members/hrmembers/profile-edit/profile-edit.component';
 import { LbgmembersDetailsComponent } from './members/lbgmembers/lbgmembers-details/lbgmembers-details.component';
 import { LbgmembersListComponent } from './members/lbgmembers/lbgmembers-list/lbgmembers-list.component';
+import { RegisterComponent } from './register/register.component';
 import { AuthorizationGuardGuard } from './_guards/authorization-guard.guard';
+import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 
 
 const routes: Routes = [
@@ -23,6 +27,10 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   },
   {
     path: 'not-found-page',
@@ -42,7 +50,7 @@ const routes: Routes = [
       //DASHBOARD 
   {
     path: 'dashboard',
-    component: DashboardLayoutComponent, canActivate: [AuthorizationGuardGuard],
+    component: DashboardLayoutComponent,
 
     children: [{
       path: '',
@@ -52,9 +60,18 @@ const routes: Routes = [
       path: 'hrmembers',
       component: HrmembersListComponent
     },
+    {
+      path: 'members/edit',
+      component: HrmemeberEditComponent
+    },
+    {
+      path: 'edit-profile',
+      component: ProfileEditComponent,
+      canDeactivate: [PreventUnsavedChangesGuard]
+    },
     //the next path has a root parameter 
     {
-      path: 'hrmember/:id',
+      path: 'hrmember/:username',
       component: HrmembersDetailsComponent
     },
     {

@@ -1,11 +1,21 @@
-<mat-nav-list>
+<mat-nav-list *ngIf="hrmember">
     <div class="profile-card">
         <div class="header" *ngIf="(loginregisterService.currentHRUser$ | async) as user">
             <h2>Hello, {{user.username | titlecase}}</h2>
-            <!-- AICI MAI TREBE FACUT SA ARATE MAILU/CEVA DATE DESPRE USERUL LOGAT ACUM -->
-            <h4>sorinasuciu14@gmail.com</h4>
+
         </div>
-        <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Sorin's Profile Pic">
+        <div>
+            <img src = "{{hrmember.photoUrl}}" 
+            class = "rounded-circle" alt = "Rounded Image" width = "200" height = "200">
+        </div>
+        <div>
+            <br>
+            {{hrmember.fullName}}
+            <h4 *ngIf="(loginregisterService.currentHRUser$ | async) as user">username: {{user.username}}</h4>
+            BEST Cluj-Napoca HR Team
+        </div>
+   
+       
     </div>
 
     <mat-divider></mat-divider>
