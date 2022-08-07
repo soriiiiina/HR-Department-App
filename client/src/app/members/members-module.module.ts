@@ -11,7 +11,8 @@ import { HrmemeberEditComponent } from './hrmembers/hrmemeber-edit/hrmemeber-edi
 import { RouterModule } from '@angular/router';
 import { ProfileEditComponent } from './hrmembers/profile-edit/profile-edit.component';
 import { FormsModule } from '@angular/forms';
-
+import { PhotoEditorComponent } from './photo-editor/photo-editor.component';
+import { FileUploadModule} from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -21,14 +22,16 @@ import { FormsModule } from '@angular/forms';
     LbgmembersDetailsComponent,
     CoreteamsComponent,
     HrmemeberEditComponent,
-    ProfileEditComponent
+    ProfileEditComponent,
+    PhotoEditorComponent,
   ],
   imports: [
     CommonModule,
     DashboardSharedModule,
     MatIconModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    FileUploadModule,
   ]
 })
 export class MembersModuleModule { }

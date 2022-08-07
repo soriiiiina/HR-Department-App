@@ -13,6 +13,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatListModule} from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { HrmemberCardComponent } from './widgets/hrmember-card/hrmember-card.component';
+import { MemberPhotoCardComponent } from './widgets/member-photo-card/member-photo-card.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HrmemberCardComponent } from './widgets/hrmember-card/hrmember-card.com
     FooterComponent,
     HeaderComponent,
     SidebarComponent,
-    HrmemberCardComponent
+    HrmemberCardComponent,
+    MemberPhotoCardComponent
   ],
   imports: [
     CommonModule,
@@ -40,6 +42,7 @@ import { HrmemberCardComponent } from './widgets/hrmember-card/hrmember-card.com
     HeaderComponent,
     SidebarComponent,
     HrmemberCardComponent,
+    MemberPhotoCardComponent
   ]
 })
 export class DashboardSharedModule { }

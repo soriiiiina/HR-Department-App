@@ -26,14 +26,14 @@ export class LoginregisterService {
         const hruser = response;
         if(hruser){
           //the data will remain in the localStorage of the browser
-          localStorage.setItem('hruser', JSON.stringify(hruser));
-          this.currentHRUserSource.next(hruser);
+          this.setCurrentHRUser(hruser);
         }
       })
     )
   }
 
   setCurrentHRUser(hruser: HRUser){
+    localStorage.setItem('hruser', JSON.stringify(hruser));
     this.currentHRUserSource.next(hruser);
   }
 
@@ -46,8 +46,7 @@ export class LoginregisterService {
     return this.http.post(this.baseUrl + 'loginregister/register', model).pipe(
       map((hruser: any) => {
         if (hruser) {
-          localStorage.setItem('hruser', JSON.stringify(hruser));
-          this.currentHRUserSource.next(hruser);
+          this.setCurrentHRUser(hruser);
         }
       //returning the HRUSer object --> in order to see it in the console; not mandatory 
       return hruser; 

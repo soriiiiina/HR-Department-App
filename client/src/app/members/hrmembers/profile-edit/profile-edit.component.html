@@ -1,14 +1,31 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/svg-with-js.min.css" rel="stylesheet" />
+
+
 <body>
     <div *ngIf="hrmember" class="container">
         <div class="main-body">
             <div class="row">
                 <div class="col-lg-4">
-                    <div class="card mt-5">
+                    <div class="card mt-4">
                         <div class="card-body">
+                            <h2>Preview:</h2>
                             <div class="d-flex flex-column align-items-center text-center">
-                                <h2>Preview:</h2>
-                                <img src="{{hrmember.photoUrl}}" alt="Admin" class="rounded-circle p-1 bg-secondary"
-                                    width="110">
+
+                                <div class="profilepic">
+                                    <img class="profilepic__image" src="{{hrmember.photoUrl}}" width="150" height="150"
+                                        alt="Profibild" />
+
+                                    <button routerLinkActive="list-item-active" routerLink="/dashboard/photo-edit">
+                                        <div class="profilepic__content">
+                                            <span class="profilepic__icon"><i class="fas fa-camera"></i></span>
+                                            <span class="profilepic__text">Edit Photo</span>
+                                        </div>
+                                    </button>
+                                </div>
+
+
                                 <div class="mt-3">
                                     <h4>{{hrmember.fullName}}</h4>
                                     <p class="text-secondary mb-1">username: {{hrmember.username}}</p>
@@ -17,7 +34,8 @@
                                     <p class="text-muted font-size-sm">BEST Cluj-Napoca HR Team</p>
 
                                     <!-- ASTEA NU NE TREBE, LE LAS DE MODEL CA CN STIE -->
-                                    <button class="btn btn-primary" form="editForm" [disabled]="!editForm.dirty">Save changes</button>
+                                    <button class="btn btn-primary" form="editForm" [disabled]="!editForm.dirty">Save
+                                        changes</button>
                                     <button class="btn btn-outline-primary">Cancel</button>
                                 </div>
                             </div>
@@ -54,7 +72,8 @@
                                         <h6 class="mb-0">Phone</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input class="form-control" [(ngModel)]="hrmember.phoneNumber" name="phoneNumber">
+                                        <input class="form-control" [(ngModel)]="hrmember.phoneNumber"
+                                            name="phoneNumber">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -70,11 +89,13 @@
                                         <h6 class="mb-0">Status or quote</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input class="form-control" [(ngModel)]="hrmember.statusOrQuote" name="statusOrQuote">
+                                        <input class="form-control" [(ngModel)]="hrmember.statusOrQuote"
+                                            name="statusOrQuote">
                                     </div>
                                 </div>
                                 <div class="alert alert-info" *ngIf="editForm.dirty">
-                                    <strong>Information: </strong> You have made changes. Any unsaved changes will be lost
+                                    <strong>Information: </strong> You have made changes. Any unsaved changes will be
+                                    lost
                                 </div>
                             </div>
                         </div>

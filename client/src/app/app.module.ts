@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { FileSelectDirective } from 'ng2-file-upload';
 
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import { RegisterComponent } from './register/register.component';
@@ -20,6 +21,7 @@ import { ServerErrorPageComponent } from './errors/server-error-page/server-erro
 import { DashboardSharedModule } from './dashboard-shared/dashboard-shared.module';
 import { HrmemberCardComponent } from './dashboard-shared/widgets/hrmember-card/hrmember-card.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
       positionClass: 'toast-bottom-right'
     }),
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},

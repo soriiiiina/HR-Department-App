@@ -9,6 +9,7 @@ namespace API.DTOs
     {
         public string Username { get; set; }
         public string UserToken { get; set; }
+        public string PhotoUrl { get; set; }
 
     }
 }

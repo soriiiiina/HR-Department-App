@@ -12,5 +12,7 @@ namespace Entities
         //defining the hruser entity inside of the photo entity
         public HRUser HRUser { get; set; }
         public int HRUserId { get; set; }
+        //property for Cloudinary 
+        public string PublicId { get; set; }
     }
 }

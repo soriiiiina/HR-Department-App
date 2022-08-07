@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-5 mb-4">
+            <div class="card" style="width: 17rem;" *ngFor="let photo of hrmember!.photo">
+                <img src="{{photo.url}}" alt="{{hrmember.username}}" class="card-img-top">
+                <div class="card-body">
+
+                    <button 
+                        [disabled]="photo.isMain"
+                        (click)="setMainPhoto(photo)"
+                        [ngClass]='photo.isMain ? "btn-success active" : "btn-outline-success"'
+                        href="#" 
+                        class="btn mr-2">
+                        Main</button>
+
+                    <button 
+                        [disabled]="photo.isMain"
+                        (click)="deletePhoto(photo.id)"
+                        href="#" 
+                        class="btn ">Delete</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

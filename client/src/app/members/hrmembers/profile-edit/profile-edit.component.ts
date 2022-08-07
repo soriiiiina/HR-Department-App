@@ -6,12 +6,14 @@ import { MembersService } from 'src/app/_services/members.service';
 import { take } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile-edit',
   templateUrl: './profile-edit.component.html',
   styleUrls: ['./profile-edit.component.css']
 })
+
 export class ProfileEditComponent implements OnInit {
   //we wanto to refresh the form after we press the save button
   //editForm is the name given to the form in the html document 
@@ -29,7 +31,7 @@ export class ProfileEditComponent implements OnInit {
   }
 
   constructor(private loginRegisterService: LoginregisterService, 
-    private memberService: MembersService, private toastr: ToastrService) {
+    private memberService: MembersService, private toastr: ToastrService, private route: ActivatedRoute) {
     //we want to populate the user object with data from our current user 
     this.loginRegisterService.currentHRUser$.pipe(take(1)).subscribe(hruser => this.hruser = hruser!);
    }

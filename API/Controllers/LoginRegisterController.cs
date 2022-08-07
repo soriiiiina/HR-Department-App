@@ -59,6 +59,7 @@ namespace API.Controllers
     {
         //get the user from the database 
         var hruser = await _dataContext.Users
+        .Include(p => p.Photo)
         .SingleOrDefaultAsync(value => value.UserName == loginDTO.Username);
 
         if(hruser == null) return Unauthorized("Invalid username"); 
@@ -79,7 +80,9 @@ namespace API.Controllers
         {
             Username = hruser.UserName,
             //creating the token for the current user 
-            UserToken = _tokenService.CreateToken(hruser)
+            UserToken = _tokenService.CreateToken(hruser),
+            //getting the photo url when the user logs in 
+            PhotoUrl = hruser.Photo.FirstOrDefault(x => x.isMain)?.Url
         };
     }
 
