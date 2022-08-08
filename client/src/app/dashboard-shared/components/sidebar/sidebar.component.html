@@ -5,9 +5,10 @@
 
         </div>
         <div>
-            <img src = "{{hruser.photoUrl}}" 
+            <img src = "{{hruser.photoUrl || './assets/user.png'}}"
             class = "rounded-circle" alt = "Rounded Image" width = "200" height = "200">
         </div>
+        
         <div>
             <br>
             {{hrmember.fullName}}

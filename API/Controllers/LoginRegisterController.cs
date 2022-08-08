@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using API.Data;
 using API.DTOs;
 using API.Interfaces;
+using AutoMapper;
 using Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,8 +18,10 @@ namespace API.Controllers
     {
         private readonly DataContext _dataContext;
         public ITokenService _tokenService { get; }
-        public LoginRegisterController(DataContext dataContext, ITokenService tokenService)
+        private readonly IMapper _mapper;
+        public LoginRegisterController(DataContext dataContext, ITokenService tokenService, IMapper mapper)
         {
+            _mapper = mapper;
             _tokenService = tokenService;
             _dataContext = dataContext;
         }
@@ -30,15 +33,15 @@ namespace API.Controllers
     {   
         if(await UserAlreadyExists(registerDTO.Username)) return BadRequest("Username is taken");
 
+        //creatign anew user --> mapping from registerDTO to HRUser
+        var hruser = _mapper.Map<HRUser>(registerDTO);
+
         //providing the hashing algorithm 
         using var hmac = new HMACSHA512();
 
-        var hruser = new HRUser
-        {
-            UserName = registerDTO.Username.ToLower(),
-            PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDTO.Password)),
-            PasswordSalt = hmac.Key
-        };
+        hruser.UserName = registerDTO.Username.ToLower();
+        hruser.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDTO.Password));
+        hruser.PasswordSalt = hmac.Key;
 
         //adding the user into the database 
         _dataContext.Users.Add(hruser); 
@@ -48,7 +51,8 @@ namespace API.Controllers
         {
             Username = hruser.UserName,
             //creating the token for the current user 
-            UserToken = _tokenService.CreateToken(hruser)
+            UserToken = _tokenService.CreateToken(hruser),
+            FullName = hruser.FullName
         };
     }
 
@@ -82,7 +86,8 @@ namespace API.Controllers
             //creating the token for the current user 
             UserToken = _tokenService.CreateToken(hruser),
             //getting the photo url when the user logs in 
-            PhotoUrl = hruser.Photo.FirstOrDefault(x => x.isMain)?.Url
+            PhotoUrl = hruser.Photo.FirstOrDefault(x => x.isMain)?.Url,
+            FullName = hruser.FullName
         };
     }
 
