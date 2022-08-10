@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using API.Data;
 using API.DTOs;
 using API.Extensions;
+using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
 using Entities;
@@ -37,11 +38,22 @@ namespace API.Controllers
 
         //endpoint to get all of the users 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MemberDTO>>> GetHRUsers()
-        {
-            var hrusers = await _hruserRepository.GetMembersAsync();
-            return Ok(hrusers);
+        public async Task<ActionResult<IEnumerable<MemberDTO>>> GetHRUsers([FromQuery]UserParams userParams)
+        {   
+            var hruser = await _hruserRepository.GetHRUserByUsernameAsync(User.GetUsername());
 
+            userParams.CurrentUserName = hruser.UserName;
+            
+            if(string.IsNullOrEmpty(userParams.Faculty))
+            // userParams.Faculty = hruser.Faculty;
+            userParams.Faculty = hruser.Faculty;
+
+            var hrusers = await _hruserRepository.GetMembersAsync(userParams);
+
+            Response.AddPaginationHeader(hrusers.CurrentPage, hrusers.PageSize, 
+                hrusers.TotalCount, hrusers.TotalPages);
+
+            return Ok(hrusers);
         }
 
         //endpoint to get a specific user by username --> we can specify a root parameter 

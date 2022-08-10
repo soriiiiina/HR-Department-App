@@ -52,7 +52,9 @@ namespace API.Controllers
             Username = hruser.UserName,
             //creating the token for the current user 
             UserToken = _tokenService.CreateToken(hruser),
-            FullName = hruser.FullName
+            FullName = hruser.FullName,
+            Faculty = hruser.Faculty
+            
         };
     }
 
@@ -87,7 +89,8 @@ namespace API.Controllers
             UserToken = _tokenService.CreateToken(hruser),
             //getting the photo url when the user logs in 
             PhotoUrl = hruser.Photo.FirstOrDefault(x => x.isMain)?.Url,
-            FullName = hruser.FullName
+            FullName = hruser.FullName,
+            Faculty = hruser.Faculty
         };
     }
 

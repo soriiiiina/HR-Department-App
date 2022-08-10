@@ -28,8 +28,9 @@ namespace API.Services
             //identifying what claims we will put in the token 
             var tokenClaims = new List<Claim>
             {
-                //we will use NameId (name identifier) to store the user's username
-                new Claim(JwtRegisteredClaimNames.NameId, hruser.UserName)
+                //we will use NameId (name identifier) to store the user's id
+                new Claim(JwtRegisteredClaimNames.NameId, hruser.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.UniqueName, hruser.UserName)
             };
 
             //create credentials

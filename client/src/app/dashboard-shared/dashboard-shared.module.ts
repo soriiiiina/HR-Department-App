@@ -9,12 +9,13 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatListModule} from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 import { HrmemberCardComponent } from './widgets/hrmember-card/hrmember-card.component';
 import { MemberPhotoCardComponent } from './widgets/member-photo-card/member-photo-card.component';
-
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { TimeagoModule } from 'ngx-timeago';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,8 @@ import { MemberPhotoCardComponent } from './widgets/member-photo-card/member-pho
     MatMenuModule,
     MatListModule,
     RouterModule,
+    PaginationModule.forRoot(),
+    TimeagoModule.forRoot(),
   ],
   exports: [
     TableComponent,
@@ -42,7 +45,9 @@ import { MemberPhotoCardComponent } from './widgets/member-photo-card/member-pho
     HeaderComponent,
     SidebarComponent,
     HrmemberCardComponent,
-    MemberPhotoCardComponent
+    MemberPhotoCardComponent,
+    PaginationModule,
+    TimeagoModule
   ]
 })
 export class DashboardSharedModule { }

@@ -11,7 +11,7 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="d-flex flex-column align-items-center text-center">
-                      <img src="{{hrmember.photoUrl}}" alt="Admin" class="rounded-circle" width="150">
+                      <img src="{{hrmember.photoUrl || './assets/user.png'}}" alt="Admin" class="rounded-circle" width="150">
                       <div class="mt-3">
                         <h4>{{hrmember.fullName}}</h4>
                         <p class="text-secondary mb-1">username: {{hrmember.username}}</p>
@@ -19,8 +19,9 @@
                         <!-- AICI POTI PUNE CEVA PROPRIETATE NOUA DE POZITIE (hrmember/normal member) -->
                         <p class="text-muted font-size-sm">BEST Cluj-Napoca HR Team</p>
   
-                        <p class="text-secondary mb-1">Last Active: {{hrmember.lastActive}}</p>
-  
+                        <p class="text-secondary mb-1">Last Active: {{hrmember.lastActive | timeago}}</p>
+                        <p class="text-secondary mb-1">Member since: {{hrmember.created | date: 'longDate'}}</p>
+                        <br>
                         <!-- ASTEA NU NE TREBE, LE LAS DE MODEL CA CN STIE -->
                         <button class="btn btn-primary">Message {{hrmember.fullName}}</button>
                       </div>
@@ -88,7 +89,7 @@
                     <div class="row">
                       <div class="col-sm-12">
   
-                        <a href="#" class="btn btn-info" routerLinkActive="list-item-active" routerLink="/dashboard/members/edit">Edit Profile</a>
+                        <a href="#" class="btn btn-info" routerLinkActive="list-item-active" routerLink="/dashboard/hrmembers">Cancel</a>
                       </div>
                     </div>
                   </div>

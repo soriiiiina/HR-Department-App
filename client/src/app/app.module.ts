@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import { RegisterComponent } from './register/register.component';
@@ -19,7 +20,8 @@ import { NotFoundPageComponent } from './errors/not-found-page/not-found-page.co
 import { ServerErrorPageComponent } from './errors/server-error-page/server-error-page.component';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { TextInputsComponent } from './_forms/text-inputs/text-inputs.component';
-
+import { DashboardSharedModule } from './dashboard-shared/dashboard-shared.module';
+import { TimeagoModule } from 'ngx-timeago';
 
 @NgModule({
   declarations: [
@@ -41,15 +43,24 @@ import { TextInputsComponent } from './_forms/text-inputs/text-inputs.component'
     BsDropdownModule.forRoot(),
 
     DashboardModule,
-    ReactiveFormsModule,
+    DashboardSharedModule,
     MembersModuleModule,
+
+    ReactiveFormsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
     BrowserAnimationsModule,
     FormsModule,
-
+    TimeagoModule.forRoot(),
   ],
+  exports: [
+    DashboardModule,
+    DashboardSharedModule,
+    MembersModuleModule,
+    TimeagoModule
+  ],
+  
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}

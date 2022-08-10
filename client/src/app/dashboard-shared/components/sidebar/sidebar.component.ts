@@ -4,6 +4,8 @@ import { HRUser } from 'src/app/_models/user';
 import { LoginregisterService } from 'src/app/_services/loginregister.service';
 import { MembersService } from 'src/app/_services/members.service';
 import { take } from 'rxjs/operators';
+import { PaginatedResult } from 'src/app/_models/pagination';
+import { UserParams } from 'src/app/_models/userParams';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,12 +14,17 @@ import { take } from 'rxjs/operators';
 })
 export class SidebarComponent implements OnInit {
 
-  hrmembers: Member[] = [];
+  hrmembers!: PaginatedResult<Member[]>;
   hrmember!: Member;
   hruser!: HRUser;
+  userParams!: UserParams;
 
   constructor(public loginregisterService:LoginregisterService, private memberService: MembersService) {
-    this.loginregisterService.currentHRUser$.pipe(take(1)).subscribe(hruser => this.hruser = hruser!);
+    this.loginregisterService.currentHRUser$.pipe(take(1)).subscribe(hruser => {
+    this.hruser = hruser!
+    this.userParams = new UserParams(hruser!);
+  });
+
    }
 
   ngOnInit(): void {
@@ -25,7 +32,7 @@ export class SidebarComponent implements OnInit {
   }
 
   loadHRMembers() {
-    this.memberService.getMembers().subscribe(members => {
+    this.memberService.getMembers(this.userParams).subscribe(members => {
       this.hrmembers = members;
     })
   }

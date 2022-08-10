@@ -4,9 +4,11 @@
             <div class="card" style="width: 17rem;">
                 <img src="{{hrmember.photoUrl || './assets/user.png'}}" alt="{{hrmember.username}}" class="card-img-top">
                 <div class="card-body">
-                    <h2 class="card-title">{{hrmember.fullName}}</h2>
-                    <h4 class="card-subtitle mb-2 text-muted">{{hrmember.username}}</h4>
-                    <p class="card-text">{{hrmember.statusOrQuote}}</p>
+                    <h2 class="card-title">{{hrmember.fullName}} | {{hrmember.username}}</h2>
+                    <p class="card-text">Faculty: {{hrmember.faculty}}</p>
+                    <p class="card-text">Age: {{hrmember.age}}</p>
+                    <p class="card-text">Last Active: {{hrmember.lastActive | timeago}}</p>
+                    <h4 class="card-subtitle mb-2 text-muted"><b>Status or quote:</b> {{hrmember.statusOrQuote}}</h4>
 
                     <a href="#" class="btn mr-2"  routerLinkActive="list-item-active" 
                     routerLink="/dashboard/hrmember/{{hrmember.username}}">See Profile</a>

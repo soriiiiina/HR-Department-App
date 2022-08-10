@@ -12,5 +12,6 @@ namespace API.DTOs
         public string PhotoUrl { get; set; }
 
         public string FullName { get; set; }
+        public string Faculty { get; set; }
     }
 }

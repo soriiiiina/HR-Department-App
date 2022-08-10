@@ -10,6 +10,7 @@ import {MatCardModule} from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MembersModuleModule } from '../members/members-module.module';
 
 @NgModule({
   declarations: [
@@ -27,12 +28,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatCardModule,
     MatTableModule,
     MatPaginatorModule,
-    DashboardSharedModule
+    DashboardSharedModule,
+    MembersModuleModule
   ],
   exports: [
     DashboardLayoutComponent,
     DashboardMainComponent,
-    DashboardSharedModule
+    DashboardSharedModule,
+    MembersModuleModule
   ]
 })
 export class DashboardModule { }

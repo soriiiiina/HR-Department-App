@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.DTOs;
+using API.Helpers;
 using API.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
@@ -62,11 +63,43 @@ public async Task<bool> SaveAllAsync()
                 .SingleOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<MemberDTO>> GetMembersAsync()
+        public async Task<PagedList<MemberDTO>> GetMembersAsync(UserParams userParams)
         {
-            return await _dataContext.Users
-            .ProjectTo<MemberDTO>(_mapper.ConfigurationProvider)
-            .ToListAsync();
+            var query = _dataContext.Users.AsQueryable();
+            
+            //NAME & FACULTY FILTERING
+            //query to return all the users, except the currently logged in one 
+            query = query.Where(u => u.UserName != userParams.CurrentUserName);
+            //query for a specific faculty 
+            //query = query.Where(u => u.Faculty == userParams.Faculty);
+            
+            //AGE FILTER 
+            var minDateOfBirth = DateTime.Today.AddYears(-userParams.MaxAge - 1);
+            var maxDateOfBirth = DateTime.Today.AddYears(-userParams.minAge);
+            query = query.Where(u => u.DateOfBirth >= minDateOfBirth && u.DateOfBirth <= maxDateOfBirth);
+
+            // SORTING 
+            query = userParams.OrderBy switch 
+            {   //case for "created"
+                "created" => query.OrderByDescending(u => u.Created),
+                //default case
+                _ => query.OrderByDescending(u => u.LastActive)
+            }; 
+
+
+            // query = userParams.OrderBy switch 
+            // {
+            //     "faculty" => query.OrderByDescending(u => u.Faculty),
+            //     //default case
+            //     _ => query.OrderByDescending(u => u.LastActive)
+            // };
+
+            //creating the PagedList with the desired paramters (and returning it) 
+            return await PagedList<MemberDTO>.CreateAsync(query.ProjectTo<MemberDTO>(_mapper
+                    .ConfigurationProvider)
+                    .AsNoTracking(), 
+                        userParams.PageNumber, userParams.PageSize);
+
         }
 
     }
