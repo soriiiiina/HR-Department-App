@@ -22,7 +22,6 @@ namespace API.Controllers
     public class HRUsersController : BaseController
     {
         //by using _dataContext we will have access to our database 
-        private readonly DataContext _dataContext;
         private readonly IHRUserRepository _hruserRepository;
         private readonly IMapper _mapper;
         private readonly IPhotoService _photoService;

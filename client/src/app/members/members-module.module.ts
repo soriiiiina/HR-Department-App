@@ -16,6 +16,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { MemberAppreciationComponent } from './member-appreciation/member-appreciation.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
     HrmemeberEditComponent,
     ProfileEditComponent,
     PhotoEditorComponent,
+    MemberAppreciationComponent,
   ],
   imports: [
     CommonModule,

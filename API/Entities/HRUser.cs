@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Entities;
 using API.Extensions;
 
 namespace Entities
@@ -22,10 +23,11 @@ namespace Entities
         public DateTime LastActive { get; set; } = DateTime.Now;
         public ICollection<HRUserPhoto> Photo { get; set; }
 
-        //method for computing the age of a user 
-        // public int GetAge() 
-        // {
-        //     return DateOfBirth.CalculateAge();
-        // }
+        //for the like feature 
+        //users liked by the currently loged in user
+        public ICollection<HRUserLike> LikedByUsers { get; set; }
+        //users that the currently loged in user likes
+        public ICollection<HRUserLike> LikedUsers { get; set; }
+
     }
 }

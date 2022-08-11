@@ -17,6 +17,7 @@ import { HrmemeberEditComponent } from './members/hrmembers/hrmemeber-edit/hrmem
 import { ProfileEditComponent } from './members/hrmembers/profile-edit/profile-edit.component';
 import { LbgmembersDetailsComponent } from './members/lbgmembers/lbgmembers-details/lbgmembers-details.component';
 import { LbgmembersListComponent } from './members/lbgmembers/lbgmembers-list/lbgmembers-list.component';
+import { MemberAppreciationComponent } from './members/member-appreciation/member-appreciation.component';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthorizationGuardGuard } from './_guards/authorization-guard.guard';
@@ -110,6 +111,10 @@ const routes: Routes = [
     {
       path: 'errors',
       component: TestErrorsComponent
+    },
+    {
+      path: 'member-appreciation',
+      component: MemberAppreciationComponent
     }
     ]
   },

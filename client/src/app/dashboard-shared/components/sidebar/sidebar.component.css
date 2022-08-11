@@ -15,3 +15,9 @@ img {
     border-radius: 50%;
 }
 
+.bi-bookmark-heart-fill, .bi-bookmark-plus-fill {
+    vertical-align: middle;
+    margin-right: 10px;
+    font-size: 23px;
+}
+

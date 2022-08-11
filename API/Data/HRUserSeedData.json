@@ -300,6 +300,22 @@
             "isMain": true
           }
         ]
+      },
+      {
+        "FullName": "Stefan",
+        "UserName": "stefan",
+        "StatusOrQuote": "Thank you multumesc merci",
+        "PhoneNumber": "(922) 488-3071",
+        "Faculty": "ETTI",
+        "DateOfBirth": "1990-06-02",
+        "Created": "2020-03-19",
+        "LastActive": "2020-05-27",
+        "Photo": [
+          {
+            "Url": "https://randomuser.me/api/portraits/women/55.jpg",
+            "isMain": true
+          }
+        ]
       }
 
   ]

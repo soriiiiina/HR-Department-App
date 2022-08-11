@@ -1,20 +1,42 @@
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+</head>
+
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-5 mb-4">
+        <div class="col">
             <div class="card" style="width: 17rem;">
                 <img src="{{hrmember.photoUrl || './assets/user.png'}}" alt="{{hrmember.username}}" class="card-img-top">
                 <div class="card-body">
                     <h2 class="card-title">{{hrmember.fullName}} | {{hrmember.username}}</h2>
                     <p class="card-text">Faculty: {{hrmember.faculty}}</p>
                     <p class="card-text">Age: {{hrmember.age}}</p>
-                    <p class="card-text">Last Active: {{hrmember.lastActive | timeago}}</p>
+                    <!-- <p class="card-text">Last Active: {{hrmember.lastActive | timeago}}</p> -->
                     <h4 class="card-subtitle mb-2 text-muted"><b>Status or quote:</b> {{hrmember.statusOrQuote}}</h4>
-
-                    <a href="#" class="btn mr-2"  routerLinkActive="list-item-active" 
-                    routerLink="/dashboard/hrmember/{{hrmember.username}}">See Profile</a>
-
-                    <a href="#" class="btn ">Message</a>
-
+                    
+                    <div style="text-align: center;">
+                        
+                            <li class="list-inline-item">
+                                <a href="#" class="btn mr-2"  routerLinkActive="list-item-active" 
+                                routerLink="/dashboard/hrmember/{{hrmember.username}}">
+                                <span class="bi-search"></span>See Profile</a>
+                            </li>
+    
+                            <li class="list-inline-item">
+                                <a href="#" class="btn ">
+                                    <i class="bi-mailbox"></i>
+                                    Message
+                                </a>
+                            </li>
+    
+                            <li class="list-inline-item">
+                                <button class="btn" (click)="addLike(hrmember)">
+                                    <i class="bi-suit-heart-fill"></i>
+                                    Like
+                                </button>  
+                            </li>
+                        
+                    </div>                                 
                 </div>
             </div>
         </div>

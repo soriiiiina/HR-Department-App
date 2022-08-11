@@ -8,6 +8,7 @@ import { FileUploader} from 'ng2-file-upload';
 import { environment } from 'src/environments/environment';
 import { GridAlignRowsDirective } from '@angular/flex-layout';
 import { Photo } from 'src/app/_models/photo';
+import { UserParams } from 'src/app/_models/userParams';
 
 @Component({
   selector: 'app-photo-editor',
@@ -18,7 +19,9 @@ export class PhotoEditorComponent implements OnInit {
   //recieving the member from the parent component 
   // @Input() member: Member | undefined;
   hrmember!: Member;
+  hrmembers!: Member[];
   hruser!: HRUser;
+  userParams!: UserParams;
 
   //for the file uploader
   uploader!: FileUploader;
@@ -29,16 +32,25 @@ export class PhotoEditorComponent implements OnInit {
     private memberService: MembersService) {
     //we want to populate the user object with data from our current user 
     this.loginRegisterService.currentHRUser$.pipe(take(1)).subscribe(hruser => this.hruser = hruser!);
+    this.userParams = this.memberService.getUserParams();
   }
-
+ 
+    
   ngOnInit(): void {
     this.loadMember();
     this.initializeUploader();
+    this.loadMembers();
   }
 
   loadMember() {
     this.memberService.getMember(this.hruser.username).subscribe(memeber => this.hrmember = memeber);
+  }
 
+  loadMembers() {
+    this.memberService.setUserParams(this.userParams);
+    this.memberService.getMembers(this.userParams).subscribe(response => {
+      this.hrmembers = response.result;
+    })
   }
 
 
