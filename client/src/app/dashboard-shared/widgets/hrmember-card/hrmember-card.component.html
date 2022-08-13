@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <div class="card" style="width: 17rem;">
+            <div class="card" style="width: 18rem;">
                 <img src="{{hrmember.photoUrl || './assets/user.png'}}" alt="{{hrmember.username}}" class="card-img-top">
                 <div class="card-body">
                     <h2 class="card-title">{{hrmember.fullName}} | {{hrmember.username}}</h2>
@@ -15,27 +15,32 @@
                     <h4 class="card-subtitle mb-2 text-muted"><b>Status or quote:</b> {{hrmember.statusOrQuote}}</h4>
                     
                     <div style="text-align: center;">
-                        
-                            <li class="list-inline-item">
-                                <a href="#" class="btn mr-2"  routerLinkActive="list-item-active" 
-                                routerLink="/dashboard/hrmember/{{hrmember.username}}">
-                                <span class="bi-search"></span>See Profile</a>
-                            </li>
-    
-                            <li class="list-inline-item">
-                                <a href="#" class="btn ">
-                                    <i class="bi-mailbox"></i>
-                                    Message
-                                </a>
-                            </li>
-    
-                            <li class="list-inline-item">
-                                <button class="btn" (click)="addLike(hrmember)">
-                                    <i class="bi-suit-heart-fill"></i>
-                                    Like
-                                </button>  
-                            </li>
-                        
+                        <div class="row">
+                            <div class="col mb-1">
+                                <li class="list-inline-item">
+                                    <a href="#" class="btn mr-2"  routerLinkActive="list-item-active" 
+                                    routerLink="/dashboard/hrmember/{{hrmember.username}}">
+                                    <span class="bi-search"></span>See Profile</a>
+                                    
+                                    <a href="#" class="btn mr-2"  
+                                    routerLinkActive="list-item-active" 
+                                    routerLink="/dashboard/hrmember/{{hrmember.username}}"
+                                    [queryParams]='{tab: 1}'>
+                                    <span class="bi-mailbox"></span>Message</a>
+
+                                </li>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <li class="list-inline-item">
+                                    <button class="btn" (click)="addLike(hrmember)">
+                                        <i class="bi-suit-heart-fill"></i>
+                                        Appreciate
+                                    </button>  
+                                </li>
+                            </div>
+                        </div>
                     </div>                                 
                 </div>
             </div>

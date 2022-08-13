@@ -1,7 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CalendarComponent } from './calendar/calendar.component';
-import { ArboreComponent } from './dashboard-tools/arbore/arbore.component';
+import { MessagesComponent } from './dashboard-tools/messages/messages.component';
 import { RecruitmentComponent } from './dashboard-tools/recruitment/recruitment.component';
 import { TasksComponent } from './dashboard-tools/tasks/tasks.component';
 import { DashboardLayoutComponent } from './dashboard/dashboard-layout/dashboard-layout.component';
@@ -11,17 +11,16 @@ import { ServerErrorPageComponent } from './errors/server-error-page/server-erro
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { HomeComponent } from './home/home.component';
 import { CoreteamsComponent } from './members/coreteams/coreteams.component';
-import { HrmembersDetailsComponent } from './members/hrmembers/hrmembers-details/hrmembers-details.component';
-import { HrmembersListComponent } from './members/hrmembers/hrmembers-list/hrmembers-list.component';
-import { HrmemeberEditComponent } from './members/hrmembers/hrmemeber-edit/hrmemeber-edit.component';
-import { ProfileEditComponent } from './members/hrmembers/profile-edit/profile-edit.component';
-import { LbgmembersDetailsComponent } from './members/lbgmembers/lbgmembers-details/lbgmembers-details.component';
-import { LbgmembersListComponent } from './members/lbgmembers/lbgmembers-list/lbgmembers-list.component';
+import { HrmembersDetailsComponent } from './members/hrmembers-details/hrmembers-details.component';
+import { HrmembersListComponent } from './members/hrmembers-list/hrmembers-list.component';
+import { ProfileEditComponent } from './members/profile-edit/profile-edit.component';
 import { MemberAppreciationComponent } from './members/member-appreciation/member-appreciation.component';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthorizationGuardGuard } from './_guards/authorization-guard.guard';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
+import { MemberMessageComponent } from './members/member-message/member-message.component';
+import { HRMemberDetailsResolver } from './_resolvers/hrmembers-details.resolver';
 
 
 const routes: Routes = [
@@ -63,10 +62,6 @@ const routes: Routes = [
       component: HrmembersListComponent
     },
     {
-      path: 'members/edit',
-      component: HrmemeberEditComponent
-    },
-    {
       path: 'edit-profile',
       component: ProfileEditComponent,
       canDeactivate: [PreventUnsavedChangesGuard]
@@ -78,15 +73,8 @@ const routes: Routes = [
     //the next path has a root parameter 
     {
       path: 'hrmember/:username',
-      component: HrmembersDetailsComponent
-    },
-    {
-      path: 'lbgmembers',
-      component: LbgmembersListComponent
-    },
-    {
-      path: 'lbgmember/:id',
-      component: LbgmembersDetailsComponent
+      component: HrmembersDetailsComponent,
+      resolve: {member: HRMemberDetailsResolver}
     },
     {
       path: 'coreteams',
@@ -101,8 +89,12 @@ const routes: Routes = [
       component: CalendarComponent
     },
     {
-      path: 'arbore',
-      component: ArboreComponent
+      path: 'allmessages',
+      component: MemberMessageComponent
+    },
+    {
+      path: 'messages',
+      component: MessagesComponent
     },
     {
       path: 'recruitment',

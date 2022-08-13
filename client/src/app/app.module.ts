@@ -22,6 +22,8 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { TextInputsComponent } from './_forms/text-inputs/text-inputs.component';
 import { DashboardSharedModule } from './dashboard-shared/dashboard-shared.module';
 import { TimeagoModule } from 'ngx-timeago';
+import { ToolsModuleModule } from './dashboard-tools/tools-module.module';
+import {TabsModule} from 'ngx-tabset';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { TimeagoModule } from 'ngx-timeago';
     DashboardModule,
     DashboardSharedModule,
     MembersModuleModule,
+    ToolsModuleModule,
 
     ReactiveFormsModule,
     ToastrModule.forRoot({
@@ -53,12 +56,16 @@ import { TimeagoModule } from 'ngx-timeago';
     BrowserAnimationsModule,
     FormsModule,
     TimeagoModule.forRoot(),
+    TabsModule.forRoot()
   ],
   exports: [
     DashboardModule,
     DashboardSharedModule,
     MembersModuleModule,
-    TimeagoModule
+    TimeagoModule,
+    ToolsModuleModule,
+    TabsModule
+
   ],
   
   providers: [
