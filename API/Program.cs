@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
+using API.Entities;
+using Entities;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,9 +33,9 @@ namespace API
                 //we will just have to restart the application and the database will be created/updated
                 await context.Database.MigrateAsync();
                 //calling the method defined in the SeedData in order to deserialize the randonmly generated users 
-                await SeedData.SeedHRUsers(context);
-
-
+                var userManager = services.GetRequiredService<UserManager<HRUser>>();
+                var roleManager = services.GetRequiredService<RoleManager<AppRole>>();
+                await SeedData.SeedHRUsers(userManager, roleManager);
             }
             catch (Exception ex)
             {

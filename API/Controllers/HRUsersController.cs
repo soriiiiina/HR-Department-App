@@ -35,6 +35,7 @@ namespace API.Controllers
             _hruserRepository = hruserRepository;
         }
 
+        
         //endpoint to get all of the users 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MemberDTO>>> GetHRUsers([FromQuery]UserParams userParams)

@@ -17,6 +17,7 @@ import { MemberAppreciationComponent } from './member-appreciation/member-apprec
 import { MemberMessageComponent } from './member-message/member-message.component';
 import {TabsModule} from 'ngx-bootstrap/tabs';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     PaginationModule.forRoot(),
     ButtonsModule.forRoot(),
     TabsModule.forRoot(),
+    MatFormFieldModule
   ],
   exports: [
     NgxPaginationModule,

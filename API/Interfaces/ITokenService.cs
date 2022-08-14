@@ -9,6 +9,6 @@ namespace API.Interfaces
     public interface ITokenService
     {
         //returning the JWT token which will be a string
-        string CreateToken(HRUser hRUser);
+        Task<string> CreateToken(HRUser hRUser);
     }
 }

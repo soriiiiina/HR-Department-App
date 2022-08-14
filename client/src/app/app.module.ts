@@ -24,6 +24,12 @@ import { DashboardSharedModule } from './dashboard-shared/dashboard-shared.modul
 import { TimeagoModule } from 'ngx-timeago';
 import { ToolsModuleModule } from './dashboard-tools/tools-module.module';
 import {TabsModule} from 'ngx-tabset';
+import { AdminPannelComponent } from './admin/admin-pannel/admin-pannel.component';
+import { HasRoleDirective } from './_directives/has-role.directive';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { RolesModalComponent } from './_modals/roles-modal/roles-modal.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +41,10 @@ import {TabsModule} from 'ngx-tabset';
     NotFoundPageComponent,
     ServerErrorPageComponent,
     TextInputsComponent,
+    AdminPannelComponent,
+    UserManagementComponent,
+    PhotoManagementComponent,
+    RolesModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +53,7 @@ import {TabsModule} from 'ngx-tabset';
     BrowserAnimationsModule,
     FormsModule,
     BsDropdownModule.forRoot(),
+    ModalModule.forRoot(),
 
     DashboardModule,
     DashboardSharedModule,
@@ -64,8 +75,8 @@ import {TabsModule} from 'ngx-tabset';
     MembersModuleModule,
     TimeagoModule,
     ToolsModuleModule,
-    TabsModule
-
+    TabsModule,
+    ModalModule
   ],
   
   providers: [

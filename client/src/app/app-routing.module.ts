@@ -21,6 +21,8 @@ import { AuthorizationGuardGuard } from './_guards/authorization-guard.guard';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 import { MemberMessageComponent } from './members/member-message/member-message.component';
 import { HRMemberDetailsResolver } from './_resolvers/hrmembers-details.resolver';
+import { AdminPannelComponent } from './admin/admin-pannel/admin-pannel.component';
+import { AdminGuard } from './_guards/admin.guard';
 
 
 const routes: Routes = [
@@ -60,6 +62,11 @@ const routes: Routes = [
     {
       path: 'hrmembers',
       component: HrmembersListComponent
+    },
+    {
+      path: 'admin',
+      component: AdminPannelComponent,
+      canActivate: [AdminGuard]
     },
     {
       path: 'edit-profile',

@@ -1,19 +1,17 @@
 using API.Entities;
 using Entities;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace API.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<HRUser, AppRole, int, IdentityUserClaim<int>, 
+        AppUserRole, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
         public DataContext(DbContextOptions options) : base(options)
         {
         }
-
-        //we want to create a database set for the HRUser class 
-        //Users is the name that the table will have
-        public DbSet<HRUser> Users { get; set; }
 
         //LIKE FEATURE
         public DbSet<HRUserLike> Likes { get; set; }
@@ -56,6 +54,19 @@ namespace API.Data
                 //the sender has many messagess sent 
                 .WithMany(b => b.MessagesSent)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            //RELATIONSHIP BETWEEN HRUSER AND APPROLE
+            modelBuilder.Entity<HRUser>()
+                .HasMany(urole => urole.UserRoles)
+                .WithOne(user => user.User)
+                .HasForeignKey(ur => ur.UserId)
+                .IsRequired();
+
+            modelBuilder.Entity<AppRole>()
+                .HasMany(urole => urole.UserRoles)
+                .WithOne(user => user.Role)
+                .HasForeignKey(ur => ur.RoleId)
+                .IsRequired();
         }
     }
 }

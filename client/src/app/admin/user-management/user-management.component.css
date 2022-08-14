@@ -1,0 +1,9 @@
+.table {
+    color: aliceblue;
+    border-color: aliceblue;
+    border: outset 1px white;
+}
+
+tr {
+    border: solid 1px white;
+}

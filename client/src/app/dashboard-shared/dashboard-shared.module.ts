@@ -16,6 +16,7 @@ import { HrmemberCardComponent } from './widgets/hrmember-card/hrmember-card.com
 import { MemberPhotoCardComponent } from './widgets/member-photo-card/member-photo-card.component';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TimeagoModule } from 'ngx-timeago';
+import { HasRoleDirective } from '../_directives/has-role.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TimeagoModule } from 'ngx-timeago';
     HeaderComponent,
     SidebarComponent,
     HrmemberCardComponent,
-    MemberPhotoCardComponent
+    MemberPhotoCardComponent,
+    HasRoleDirective
   ],
   imports: [
     CommonModule,
@@ -47,7 +49,8 @@ import { TimeagoModule } from 'ngx-timeago';
     HrmemberCardComponent,
     MemberPhotoCardComponent,
     PaginationModule,
-    TimeagoModule
+    TimeagoModule,
+    HasRoleDirective
   ]
 })
 export class DashboardSharedModule { }

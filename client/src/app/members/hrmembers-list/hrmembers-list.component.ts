@@ -7,6 +7,7 @@ import { UserParams } from 'src/app/_models/userParams';
 import { LoginregisterService } from 'src/app/_services/loginregister.service';
 import { MembersService } from 'src/app/_services/members.service';
 import { take } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-hrmembers-list',
@@ -17,8 +18,9 @@ export class HrmembersListComponent implements OnInit {
 
   //am observable of the member array for the non filtering part 
   
-
+  search : String ="";
   hrmembers!: Member[];
+  hrmember!: Member;
   pagination!: PaginationInterface; 
   userParams!: UserParams;
   hruser!: HRUser;
@@ -32,7 +34,7 @@ export class HrmembersListComponent implements OnInit {
                 {value: 'Construction', display: 'Construction'},
               ];
 
-  constructor(private memberService: MembersService) { 
+  constructor(private memberService: MembersService,private route: ActivatedRoute) { 
     this.userParams = this.memberService.getUserParams();
   }
 

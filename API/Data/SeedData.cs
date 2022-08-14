@@ -5,37 +5,57 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using API.Entities;
 using Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
     public class SeedData
     {
-        public static async Task SeedHRUsers(DataContext dataContext)
+        public static async Task SeedHRUsers(UserManager<HRUser> userManager, 
+            RoleManager<AppRole> roleManager)
         {
             //check if there are users 
-            if(await dataContext.Users.AnyAsync()) return; 
+            if(await userManager.Users.AnyAsync()) return; 
 
             var hruserData = await System.IO.File.ReadAllTextAsync("Data/HRUserSeedData.json");
             //creating a normal list of hrusers of type HRUser
             var hrusers = JsonSerializer.Deserialize<List<HRUser>>(hruserData);
 
+            if(hrusers == null) return; 
+
+            var roles = new List<AppRole> 
+            {
+                new AppRole{Name = "Member"},
+                new AppRole{Name = "Admin"},
+                new AppRole{Name = "TeamMember"},
+            };
+
+            foreach (var role in roles)
+            {
+                await roleManager.CreateAsync(role);
+            }
+
             //looping through all the users 
             foreach (var hruser in hrusers)
             {
-                using var hmac = new HMACSHA512();
-
                 hruser.UserName = hruser.UserName.ToLower();
-                hruser.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes("pa"));
-                hruser.PasswordSalt = hmac.Key;
+                
+                await userManager.CreateAsync(hruser, "pa");
 
-                dataContext.Users.Add(hruser);
+                await userManager.AddToRoleAsync(hruser, "Member");
             }
 
-            await dataContext.SaveChangesAsync();
+            var admin = new HRUser
+            {
+                UserName = "admin"
+            };
 
+            await userManager.CreateAsync(admin, "pa");
 
+            await userManager.AddToRolesAsync(admin, new[] {"Admin", "TeamMember"});
         }   
     }
 }

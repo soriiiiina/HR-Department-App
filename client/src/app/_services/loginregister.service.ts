@@ -33,6 +33,13 @@ export class LoginregisterService {
   }
 
   setCurrentHRUser(hruser: HRUser){
+    hruser.roles = [];
+
+    //taking the current users roles from the token 
+    const roles = this.getDecodedToken(hruser.userToken)!.role;
+
+    Array.isArray(roles) ? hruser.roles=roles : hruser.roles.push(roles);
+
     localStorage.setItem('hruser', JSON.stringify(hruser));
     this.currentHRUserSource.next(hruser);
   }
@@ -52,5 +59,9 @@ export class LoginregisterService {
       return hruser; 
       })
     )
+  }
+
+  getDecodedToken(token: string) {
+    return JSON.parse(atob(token.split('.')[1]));
   }
 }

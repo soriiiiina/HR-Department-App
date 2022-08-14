@@ -9,6 +9,7 @@ using API.DTOs;
 using API.Interfaces;
 using AutoMapper;
 using Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,14 +17,19 @@ namespace API.Controllers
 {
     public class LoginRegisterController : BaseController
     {
-        private readonly DataContext _dataContext;
         public ITokenService _tokenService { get; }
         private readonly IMapper _mapper;
-        public LoginRegisterController(DataContext dataContext, ITokenService tokenService, IMapper mapper)
+        
+        private readonly SignInManager<HRUser> _signInManager;
+        private readonly UserManager<HRUser> _userManager;
+        
+        public LoginRegisterController(UserManager<HRUser> userManager, ITokenService tokenService,
+         IMapper mapper, SignInManager<HRUser> signInManager)
         {
+            _userManager = userManager;
+            _signInManager = signInManager;
             _mapper = mapper;
             _tokenService = tokenService;
-            _dataContext = dataContext;
         }
 
     //CREATING THE METHODS 
@@ -36,22 +42,23 @@ namespace API.Controllers
         //creatign anew user --> mapping from registerDTO to HRUser
         var hruser = _mapper.Map<HRUser>(registerDTO);
 
-        //providing the hashing algorithm 
-        using var hmac = new HMACSHA512();
-
         hruser.UserName = registerDTO.Username.ToLower();
-        hruser.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDTO.Password));
-        hruser.PasswordSalt = hmac.Key;
 
-        //adding the user into the database 
-        _dataContext.Users.Add(hruser); 
-        await _dataContext.SaveChangesAsync();
+        //creating & adding the user into the database
+        var result = await _userManager.CreateAsync(hruser, registerDTO.Password);
+
+        if(!result.Succeeded) return BadRequest(result.Errors);
+
+        //adding the user into the member role -> any new registered user will get the role "MEMBER"
+        var roleResult = await _userManager.AddToRoleAsync(hruser, "Member");
+
+        if(!roleResult.Succeeded) return BadRequest(result.Errors);
 
         return new HRUserDTO
         {
             Username = hruser.UserName,
             //creating the token for the current user 
-            UserToken = _tokenService.CreateToken(hruser),
+            UserToken = await _tokenService.CreateToken(hruser),
             FullName = hruser.FullName,
             Faculty = hruser.Faculty
             
@@ -64,29 +71,24 @@ namespace API.Controllers
     public async Task<ActionResult<HRUserDTO>> LoginUser(LoginDTO loginDTO)
     {
         //get the user from the database 
-        var hruser = await _dataContext.Users
+        var hruser = await _userManager.Users
         .Include(p => p.Photo)
-        .SingleOrDefaultAsync(value => value.UserName == loginDTO.Username);
+        .SingleOrDefaultAsync(value => value.UserName == loginDTO.Username.ToLower());
 
         if(hruser == null) return Unauthorized("Invalid username"); 
 
-        //we need to calculate the computed hash using the password salt 
-        using var hmac = new HMACSHA512(hruser.PasswordSalt);
+        //using the SingInManager to sign in the user 
+        var result = await _signInManager
+            .CheckPasswordSignInAsync(hruser, loginDTO.Password, false);
 
-        var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDTO.Password));
-
-        //comparing the passwords 
-        for(int i = 0; i < computedHash.Length; i++)
-        {
-            if(computedHash[i] != hruser.PasswordHash[i]) return Unauthorized("Invalid password");
-        }
+        if(!result.Succeeded) return Unauthorized();
 
         //returning the HRUserDTO 
         return new HRUserDTO
         {
             Username = hruser.UserName,
             //creating the token for the current user 
-            UserToken = _tokenService.CreateToken(hruser),
+            UserToken = await _tokenService.CreateToken(hruser),
             //getting the photo url when the user logs in 
             PhotoUrl = hruser.Photo.FirstOrDefault(x => x.isMain)?.Url,
             FullName = hruser.FullName,
@@ -97,7 +99,7 @@ namespace API.Controllers
         //making sure the username is unique 
         private async Task<bool> UserAlreadyExists(string username)
         {   //cheking if any username matches the current username 
-            return await _dataContext.Users.AnyAsync(x => x.UserName == username.ToLower());
+            return await _userManager.Users.AnyAsync(x => x.UserName == username.ToLower());
         }
     }
 }

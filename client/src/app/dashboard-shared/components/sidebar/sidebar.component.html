@@ -19,6 +19,15 @@
        
     </div>
 
+    <div *appHasRole='["Admin", "TeamMember", "Moderator"]'>
+        <h2 matSubheader>Admin</h2>
+
+        <a mat-list-item routerLinkActive="list-item-active" routerLink="/dashboard/admin">
+            <mat-icon>admin</mat-icon>
+            Admin
+        </a>
+    </div>
+    
     <mat-divider></mat-divider>
 
     <h2 matSubheader>Home</h2>
@@ -26,6 +35,8 @@
         <mat-icon>home</mat-icon>
         Dashboard
     </a>
+
+
 
     <mat-divider></mat-divider>
 

@@ -20,7 +20,7 @@ export class HrmemberCardComponent implements OnInit {
 
   addLike(member: Member) {
     this.memberService.addLike(member.username).subscribe(() => {
-      this.toastr.success('You have liked' + member.username);
+      this.toastr.success('Done! You showed some appreciation to ' + member.username);
     })
   }
 

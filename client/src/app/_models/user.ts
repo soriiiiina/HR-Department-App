@@ -5,4 +5,5 @@ export interface HRUser {
     photoUrl: string;
     fullname: string;
     faculty: string;
+    roles: string[];
 }
