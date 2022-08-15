@@ -30,6 +30,8 @@ import { UserManagementComponent } from './admin/user-management/user-management
 import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { RolesModalComponent } from './_modals/roles-modal/roles-modal.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,12 @@ import { RolesModalComponent } from './_modals/roles-modal/roles-modal.component
     BrowserAnimationsModule,
     FormsModule,
     TimeagoModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
   ],
   exports: [
     DashboardModule,

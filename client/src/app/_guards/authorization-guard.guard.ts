@@ -23,5 +23,5 @@ export class AuthorizationGuardGuard implements CanActivate {
         })
       )
     }
-  
+    
 }

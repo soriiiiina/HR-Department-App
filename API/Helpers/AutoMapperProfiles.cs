@@ -11,7 +11,7 @@ using Entities;
 namespace API.Helpers
 {
     public class AutoMapperProfiles : Profile
-    {
+    {       //SOURCE - DESTINATION 
         public AutoMapperProfiles()
         {
             CreateMap<HRUser, MemberDTO>()
@@ -19,6 +19,7 @@ namespace API.Helpers
                 options => options.MapFrom(source => source.Photo.FirstOrDefault(x => x.isMain).Url))
                 .ForMember(destination => destination.Age, 
                 options => options.MapFrom(source => source.DateOfBirth.CalculateAge()));
+
             CreateMap<HRUserPhoto, PhotoDTO>();
             CreateMap<MemberUpdateDTO, HRUser>();
             CreateMap<RegisterDTO, HRUser>();

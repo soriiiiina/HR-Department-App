@@ -1,4 +1,5 @@
 import { Photo } from "./photo"
+import { Role } from "./role"
 
 
 export interface Member {
@@ -10,9 +11,10 @@ export interface Member {
   phoneNumber: string
   faculty: string
   age: number
-  created: Date;
-  lastActive: Date;
+  created: Date
+  lastActive: Date
   photo: Photo[]
+  userRoles: Role[]
 }
 
 

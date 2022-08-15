@@ -6,8 +6,11 @@ import { HRUser } from 'src/app/_models/user';
 import { UserParams } from 'src/app/_models/userParams';
 import { LoginregisterService } from 'src/app/_services/loginregister.service';
 import { MembersService } from 'src/app/_services/members.service';
-import { take } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import jwt_decode from 'jwt-decode';
+import { AuthorizationGuardGuard } from 'src/app/_guards/authorization-guard.guard';
+import { AdminService } from 'src/app/_services/admin.service';
 
 @Component({
   selector: 'app-hrmembers-list',
@@ -18,28 +21,21 @@ export class HrmembersListComponent implements OnInit {
 
   //am observable of the member array for the non filtering part 
   
-  search : String ="";
-  hrmembers!: Member[];
-  hrmember!: Member;
+  searchText : any;
+  hrmembers!: HRUser;
   pagination!: PaginationInterface; 
   userParams!: UserParams;
-  hruser!: HRUser;
-  ngSelect = 'ETTI';
-  facultyList =[{value: 'Automation', display: 'Automation'},
-                {value: 'Computer', display: 'Computer'},
-                {value: 'ETTI', display: 'ETTI'},
-                {value: 'Robotics', display: 'Robotics'},
-                {value: 'Mechanics', display: 'Mechanics'},
-                {value: 'Architecture', display: 'Architecture'},
-                {value: 'Construction', display: 'Construction'},
-              ];
+  membersWithRole!: Partial<HRUser>;
 
-  constructor(private memberService: MembersService,private route: ActivatedRoute) { 
+
+  constructor(private memberService: MembersService,private route: ActivatedRoute, 
+      private loginregisterService: LoginregisterService, private adminService: AdminService) {   
     this.userParams = this.memberService.getUserParams();
   }
 
   ngOnInit(): void {
     this.loadHRMembers();
+    this.getUsersWithRoles();
       }
 
   loadHRMembers() {
@@ -49,6 +45,12 @@ export class HrmembersListComponent implements OnInit {
       this.pagination = response.pagination;
     })
   }
+
+  getUsersWithRoles() {
+    this.adminService.getUsersWithRoles().subscribe(users => {
+      this.membersWithRole = users!;
+    })
+  } 
 
   resetFilters() {
     this.userParams = this.memberService.resetUserParams();

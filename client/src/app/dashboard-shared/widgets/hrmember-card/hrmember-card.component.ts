@@ -1,7 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Member } from 'src/app/_models/member';
+import { HRUser } from 'src/app/_models/user';
+import { LoginregisterService } from 'src/app/_services/loginregister.service';
 import { MembersService } from 'src/app/_services/members.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-hrmember-card',
@@ -12,8 +15,10 @@ export class HrmemberCardComponent implements OnInit {
 
   //we need to get all the users from the parent component (hrmembers-list)
   @Input() hrmember!: Member; 
+
   
-  constructor(private memberService: MembersService, private toastr: ToastrService) { }
+  constructor(private memberService: MembersService, private toastr: ToastrService, private loginRegisterService: LoginregisterService) {
+   }
 
   ngOnInit(): void {
   }

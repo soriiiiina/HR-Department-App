@@ -1,29 +1,16 @@
-<!-- <h5><u><i>Demo to create search bar in Angular material!! </i></u></h5>
-<form class="example-form">
-<mat-form-field class="example-full-width">
-<span matPrefix> </span>
-<input type="tel" matInput placeholder="Search" name= "search" [(ngModel)]= "search">
-<button matSuffix mat-button><mat-icon >search</mat-icon></button>
-</mat-form-field>
-<br/>
-{{search}}
-</form> -->
-
-
-
-
-<div class="d-flex form-inputs">
-    <input class="form-control" type="text" placeholder="Search any user...">
-    <i class="bx bx-search"></i>
-</div>
-
-
-<br><br>
-
 <div class="text-center mt-3">
     <h2>HR Department Members - {{pagination?.totalItems}} found</h2>
 </div>
 
+<!-- FILTRU OKE CARE CAUTA DOAR PE O PAGINA -->
+<div class="container">
+    <div class="row">
+        <!-- SEARCH BAR -->
+        <div class="d-flex form-inputs">
+            <input class="form-control mb-5" type="text" name="search" [(ngModel)]="searchText" placeholder="Search any user by name or faculty">
+        </div>
+
+<!-- FILTER FOR AGE, LAST ACTIVE AND NEW MEMBERS -->
 <div class="container mt-3">
     <form #form="ngForm" class="form-inline mb-3 " (ngSubmit)="loadHRMembers()" autocomplete="off">
         <div class="form-group px-2">
@@ -77,30 +64,28 @@
 
             </div>   
         </div>
-        <br><br>
-        <!-- <div class="form-group px-2">
-             <label>Show: </label>
-             <select name="faculty" style="width: 130px;" [(ngModel)]="userParams.faculty" class="form-control ml-1">
-                <option *ngFor="let faculty of facultyList" [value]="faculty.value">
-                     {{faculty.display}}
-                 </option>
-             </select>
-            </div> -->
-            
+        <br><br>         
 </form>
-
 </div>
 
+         <!-- DISPLAY MEMBERS -->
+                    <div class="row">
+                        <div *ngFor="let hrmember of hrmembers | filter: searchText" class="col-4">
+                                <app-hrmember-card [hrmember]="hrmember" ></app-hrmember-card>
+                        </div>
+                    </div>
 
-<div class="row">
-    <div *ngFor="let hrmember of hrmembers" class="col-4">
-        <app-hrmember-card [hrmember]="hrmember"></app-hrmember-card>
-    </div>
-</div>
+                    </div>
+            </div>
+
+
+
+
+
+<br><br>
 
 <!-- PAGINATION -->
 <div class="d-flex justify-content-center" *ngIf="pagination">
-
     <pagination 
         [boundaryLinks]="true" 
         [totalItems]="pagination.totalItems" 
@@ -112,5 +97,4 @@
         firstText="&laquo;" 
         lastText="&raquo;">
     </pagination>
-
 </div>

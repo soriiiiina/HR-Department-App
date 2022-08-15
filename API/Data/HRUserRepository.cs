@@ -38,6 +38,7 @@ namespace API.Data
         public async Task<IEnumerable<HRUser>> GetHRUsersAsync()
         {
             return await _dataContext.Users
+            .Include(r => r.UserRoles)
             .Include(p => p.Photo)
             .ToListAsync();
         }
@@ -86,13 +87,6 @@ public async Task<bool> SaveAllAsync()
                 _ => query.OrderByDescending(u => u.LastActive)
             }; 
 
-
-            // query = userParams.OrderBy switch 
-            // {
-            //     "faculty" => query.OrderByDescending(u => u.Faculty),
-            //     //default case
-            //     _ => query.OrderByDescending(u => u.LastActive)
-            // };
 
             //creating the PagedList with the desired paramters (and returning it) 
             return await PagedList<MemberDTO>.CreateAsync(query.ProjectTo<MemberDTO>(_mapper

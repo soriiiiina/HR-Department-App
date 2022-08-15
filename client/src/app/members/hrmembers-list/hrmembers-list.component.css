@@ -36,3 +36,7 @@ body{
 .qty{
     font-size:12px;
 }
+
+.pagination-selection, pagination {
+    color:purple;
+}

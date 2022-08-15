@@ -63,6 +63,7 @@ namespace API.Controllers
             return await _hruserRepository.GetMemberAsync(username);
         }
 
+
         [HttpPut]
         public async Task<ActionResult> UpdateUser(MemberUpdateDTO memberUpdateDTO)
         {

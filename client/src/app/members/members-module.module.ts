@@ -18,6 +18,7 @@ import { MemberMessageComponent } from './member-message/member-message.componen
 import {TabsModule} from 'ngx-bootstrap/tabs';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     PaginationModule.forRoot(),
     ButtonsModule.forRoot(),
     TabsModule.forRoot(),
-    MatFormFieldModule
+    MatFormFieldModule,
+    Ng2SearchPipeModule
   ],
   exports: [
     NgxPaginationModule,
