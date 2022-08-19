@@ -55,3 +55,8 @@ body {
     width: 50%;
     text-align: center;
   }
+
+  .button-delete {
+    width: 200px;
+    float: right;
+  }

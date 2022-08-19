@@ -11,6 +11,7 @@ using AutoMapper;
 using Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,32 +26,32 @@ namespace API.Controllers
         private readonly IHRUserRepository _hruserRepository;
         private readonly IMapper _mapper;
         private readonly IPhotoService _photoService;
-
+        private readonly UserManager<HRUser> _userManeger;
         public HRUsersController(IHRUserRepository hruserRepository, IMapper mapper,
-
-            IPhotoService photoService)
+            IPhotoService photoService, UserManager<HRUser> userManager)
         {
+            _userManeger = userManager;
             _photoService = photoService;
             _mapper = mapper;
             _hruserRepository = hruserRepository;
         }
 
-        
+
         //endpoint to get all of the users 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<MemberDTO>>> GetHRUsers([FromQuery]UserParams userParams)
-        {   
+        public async Task<ActionResult<IEnumerable<MemberDTO>>> GetHRUsers([FromQuery] UserParams userParams)
+        {
             var hruser = await _hruserRepository.GetHRUserByUsernameAsync(User.GetUsername());
 
             userParams.CurrentUserName = hruser.UserName;
-            
-            if(string.IsNullOrEmpty(userParams.Faculty))
-            // userParams.Faculty = hruser.Faculty;
-            userParams.Faculty = hruser.Faculty;
+
+            if (string.IsNullOrEmpty(userParams.Faculty))
+                // userParams.Faculty = hruser.Faculty;
+                userParams.Faculty = hruser.Faculty;
 
             var hrusers = await _hruserRepository.GetMembersAsync(userParams);
 
-            Response.AddPaginationHeader(hrusers.CurrentPage, hrusers.PageSize, 
+            Response.AddPaginationHeader(hrusers.CurrentPage, hrusers.PageSize,
                 hrusers.TotalCount, hrusers.TotalPages);
 
             return Ok(hrusers);
@@ -146,22 +147,49 @@ namespace API.Controllers
 
             var photoToDelete = user.Photo.FirstOrDefault(x => x.Id == photoId);
 
-            if(photoToDelete == null) return NotFound();
-            
+            if (photoToDelete == null) return NotFound();
+
             if (photoToDelete.isMain) return BadRequest("You cannot delete your main photo");
 
-            if(photoToDelete.PublicId != null)
+            if (photoToDelete.PublicId != null)
             {
                 var result = await _photoService.DeletehotoAsync(photoToDelete.PublicId);
 
-                if(result.Error != null) return BadRequest(result.Error.Message);
+                if (result.Error != null) return BadRequest(result.Error.Message);
             }
 
             user.Photo.Remove(photoToDelete);
 
-            if(await _hruserRepository.SaveAllAsync()) return Ok();
+            if (await _hruserRepository.SaveAllAsync()) return Ok();
 
             return BadRequest("Failed to delete the photo");
+        }
+
+
+        [HttpPost("user-delete/{username}")]
+        public async Task<ActionResult> DeleteHRUser(string username)
+        {
+            //getting the user based on the username 
+            var user = await _userManeger.FindByNameAsync(username);
+
+            if(user != null) 
+            {
+                await _userManeger.DeleteAsync(user);
+                return Ok();
+            }
+
+            return BadRequest("IT FAILED");
+
+            // //verifying that the user is the currently logged in user 
+            // if (username != user.UserName) return BadRequest("You are not allowed to delete");
+
+            // if (user == null) return BadRequest("There is no user");
+
+            // //delete user 
+            // await _userManeger.DeleteAsync(user);
+
+            // return Ok();
+
         }
     }
 }

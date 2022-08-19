@@ -91,15 +91,20 @@
                                             name="statusOrQuote">
                                     </div>
                                 </div>
+                                <button class="btn btn-danger button-delete" (click)="deleteAccount(hrmember.username)">Delete Account
+                                </button>
                                 <div class="alert alert-info" *ngIf="editForm.dirty">
                                     <strong>Information: </strong> You have made changes. Any unsaved changes will be
                                     lost
                                 </div>
+                               
                             </div>
                         </div>
                     </div>
                 </form>
+               
             </div>
         </div>
     </div>
+     
 </body>

@@ -8,6 +8,7 @@ using API.Interfaces;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
@@ -16,11 +17,13 @@ namespace API.Data
     {
         private readonly DataContext _dataContext;
         private readonly IMapper _mapper;
-
-        public HRUserRepository(DataContext dataContext, IMapper mapper)
+        private readonly UserManager<HRUser> _userManeger;
+        
+        public HRUserRepository(DataContext dataContext, IMapper mapper, UserManager<HRUser> userManager)
         {
             _mapper = mapper;
             _dataContext = dataContext;
+             _userManeger = userManager;
         }
 
         public async Task<HRUser> GetHRUserByIdAsync(int id)
@@ -42,7 +45,7 @@ namespace API.Data
             .Include(p => p.Photo)
             .ToListAsync();
         }
-public async Task<bool> SaveAllAsync()
+        public async Task<bool> SaveAllAsync()
         {
             //if smething has changed/been saved, it is going to return a value > 0 
             return await _dataContext.SaveChangesAsync() > 0;

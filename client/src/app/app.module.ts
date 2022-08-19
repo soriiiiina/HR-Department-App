@@ -32,13 +32,14 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { RolesModalComponent } from './_modals/roles-modal/roles-modal.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     HomeComponent,
-    CalendarComponent,
     TestErrorsComponent,
     NotFoundPageComponent,
     ServerErrorPageComponent,
@@ -75,6 +76,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
+    FlatpickrModule.forRoot(),
+    NgbModule,
   ],
   exports: [
     DashboardModule,

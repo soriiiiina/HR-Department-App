@@ -120,5 +120,11 @@ export class MembersService {
     return getPaginatedResult<Partial<Member[]>>(this.baseUrl + 'likes', params, this.http);
   }
 
+  deleteAccount(username: string) 
+  {
+    // confirm("Are you sure you want to delete your account?");
+    return this.http.delete(this.baseUrl + 'hrusers/user-delete/' + username);
+  }
+
   
 }
