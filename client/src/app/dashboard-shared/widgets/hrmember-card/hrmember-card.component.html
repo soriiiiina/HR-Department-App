@@ -5,10 +5,15 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <img src="{{hrmember.photoUrl || './assets/user.png'}}" alt="{{hrmember.username}}" class="card-img-top">
                 <div class="card-body">
-                    <h2 class="card-title">{{hrmember.fullName}} | {{hrmember.username}}</h2>
+                    <h2 class="card-title">
+                        <span [class.is-online]="(presence.onlineUsers$ | async).includes(hrmember.username)">
+                            <i class="fa fa-user"></i>
+                        </span>
+                        
+                        {{hrmember.fullName}} | {{hrmember.username}}</h2>
                     <p class="card-text">Faculty: {{hrmember.faculty}}</p>
                     <p class="card-text">Age: {{hrmember.age}}</p>
                     <!-- <p class="card-text">Last Active: {{hrmember.lastActive | timeago}}</p> -->

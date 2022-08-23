@@ -1,0 +1,109 @@
+<div class="text-center mt-3">
+    <h2>HR Department Members - {{pagination?.totalItems}} found</h2>
+</div>
+
+<!-- FILTRU OKE CARE CAUTA DOAR PE O PAGINA -->
+<div class="container">
+    <div class="row">
+        <!-- SEARCH BAR -->
+        <div class="d-flex form-inputs">
+            <input (ngModelChange)="searchHRMembers(searchText)" class="form-control mb-4" type="text" name="search" [(ngModel)]="searchText" placeholder="Search any user by name or faculty">
+        </div>
+
+<!-- FILTER FOR AGE, LAST ACTIVE AND NEW MEMBERS -->
+<div class="container">
+    <form #form="ngForm" class="form-inline" (ngSubmit)="loadHRMembers()" autocomplete="off">
+        <div class="form-group px-2">
+            <div class="row" >
+                    <div class="col-sm-1 age-filter">
+                        <label><h4>Age from</h4></label>
+                    </div>
+                    <div class="col col-sm-2 div-group">
+                        <div class="age-filter" >
+                            <input type="number" class="form-age" name="mingAge"
+                                [(ngModel)]="userParams.mingAge">
+                        </div>
+         
+                        <div class="age-filter">
+                            <input type="number" class="form-age" name="maxAge"
+                                [(ngModel)]="userParams.maxAge">
+                        </div>
+                    </div>
+                   
+                
+
+                <div class="col-sm-3">
+                    <div class="btn-group">
+                        <button class="btn btn-outline-dark btn-sm px-2 apply" type="submit">Apply</button>
+                        <button (click)="resetFilters()" class="btn btn-dark btn-sm px-2 reset-filters" type="submit">Reset filters</button>
+                </div>
+                </div>
+              
+                <div class="col-sm-3"></div>
+
+                <br><br>
+                <div class="col-sm-1">
+                    <div class="btn-group float-right">
+                        <button 
+                            type="button"
+                            class="btn btn-dark btn-sm px-2 last-active" name='orderBy'
+                            (click)="loadHRMembers()" 
+                            btnRadio="lastActive"
+                            [(ngModel)]="userParams.orderBy">Last Active
+                        </button>
+        
+                        <button 
+                            type="button"
+                            class="btn btn-dark btn-sm px-2 newest-member" name='orderBy'
+                            (click)="loadHRMembers()" 
+                            btnRadio="created"
+                            [(ngModel)]="userParams.orderBy">
+                            <label>Newest</label> 
+                        </button>
+                    </div>
+                </div>
+
+            </div>   
+        </div>
+        <br><br>         
+</form>
+</div>
+
+         <!-- DISPLAY MEMBERS -->
+                    <div class="row" *ngIf="!searchText">
+                        <div  *ngFor="let hrmember of hrmembers" class="col-4">   
+                            <div >
+                                <app-hrmember-card [hrmember]="hrmember"></app-hrmember-card>
+                            </div> 
+                       
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="searchText">
+                        <div  *ngFor="let hrmember of searchResult" class="col-4">
+                                <app-hrmember-card [hrmember]="hrmember"></app-hrmember-card>
+                        </div>
+                    </div>
+
+                    </div>
+            </div>
+
+
+
+
+
+<br><br>
+
+<!-- PAGINATION -->
+<div class="d-flex justify-content-center" *ngIf="pagination">
+    <pagination 
+        [boundaryLinks]="true" 
+        [totalItems]="pagination.totalItems" 
+        [itemsPerPage]="pagination.itemsPerPage"
+        [(ngModel)]="pagination.currentPage" 
+        (pageChanged)="pageChanged($event)" 
+        previousText="&lsaquo;"
+        nextText="&rsaquo;" 
+        firstText="&laquo;" 
+        lastText="&raquo;">
+    </pagination>
+</div>

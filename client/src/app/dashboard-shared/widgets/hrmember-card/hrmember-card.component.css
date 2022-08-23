@@ -15,9 +15,10 @@
 
   .card {
     background: #222;
-    border: 1px solid #8a24dd;
+    border: 1.5px solid #6F2CD5;
     color: rgba(250, 250, 250, 0.8);
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
+    width: 18rem;
   }
   
   .btn {
@@ -41,3 +42,20 @@
     box-shadow: #222 1px 0 10px;
     text-decoration: underline;
   }
+
+  img {
+    width: 286px;
+    height: 200px;
+    object-fit: cover;
+}
+
+@keyframes fa-blink {
+  0% {opacity: 1;}
+  100% {opacity: 0.4;}
+}
+
+.is-online {
+  animation: fa-blink 1.5s linear infinite;
+  color: rgb(1, 189, 42)
+}
+

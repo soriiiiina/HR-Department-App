@@ -22,6 +22,11 @@ namespace API.Data
             _dataContext = dataContext;
         }
 
+        public void AddGroup(Group group)
+        {
+            _dataContext.Groups.Add(group);
+        }
+
         public void AddMessage(Message message)
         {
             _dataContext.Messages.Add(message);
@@ -32,12 +37,24 @@ namespace API.Data
             _dataContext.Messages.Remove(message);
         }
 
+        public async Task<Connection> GetConnection(string connectionId)
+        {
+            return await _dataContext.Connections.FindAsync(connectionId);
+        }
+
         public async Task<Message> GetMessage(int id)
         {
             return await _dataContext.Messages
                 .Include(u => u.Sender)
                 .Include(u => u.Reciever)
                 .SingleOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<Group> GetMessageGroup(string groupName)
+        {
+            return await _dataContext.Groups
+                .Include(x => x.Connections)
+                .FirstOrDefaultAsync(x => x.Name == groupName);
         }
 
         public async Task<PagedList<MessageDTO>> GetMessagesForUser(MessageParams messageParams)
@@ -89,7 +106,7 @@ namespace API.Data
             {
                 foreach (var message in unreadMessages)
                 {
-                    message.DateRead = DateTime.Now;
+                    message.DateRead = DateTime.UtcNow;
                 }
 
                 await _dataContext.SaveChangesAsync();
@@ -97,6 +114,11 @@ namespace API.Data
 
             //return the MessageDTO
             return _mapper.Map<IEnumerable<MessageDTO>>(messages);
+        }
+
+        public void RemoveConnection(Connection connection)
+        {
+            _dataContext.Connections.Remove(connection);
         }
 
         public async Task<bool> SaveAllAsync()

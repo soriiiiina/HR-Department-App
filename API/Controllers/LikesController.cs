@@ -41,7 +41,7 @@ namespace API.Controllers
             if(userLike != null) return BadRequest("You already liked this user");
             
             //if we dont have a like, we will create one 
-            userLike = new HRUserLike 
+            userLike = new HRUserAppreciation 
             {
                 SourceUSerId = sourceUserId,
                 LikedUserId = likedUser.Id
@@ -57,7 +57,7 @@ namespace API.Controllers
 
       //get the user's likes 
       [HttpGet]
-      public async Task<ActionResult<IEnumerable<LikeDTO>>> GetUserLikes([FromQuery]LikesParams likesParams)
+      public async Task<ActionResult<IEnumerable<HRUserAppreciationDTO>>> GetUserLikes([FromQuery]LikesParams likesParams)
       {
         likesParams.UserId = User.GetUserId();
 

@@ -1,2 +1,26 @@
-<p>tasks works!</p>
-<h1>buna siua</h1>
+<div class="profile-card">
+    <div class="card-body">
+        <div class="mb-4">
+            <h1>Todo List</h1>
+            <form [formGroup]="newToDoForm" class="flex mt-4 ml-4" (ngSubmit)="addTask()">
+                <input class="add-task-input"
+                    placeholder="Add task" formControlName="todoItem">
+                <button type="submit"
+                    class="hr-button add-task-button"
+                    [disabled]="newToDoForm.value.todoItem === ''"  
+                    >Add
+                </button>
+            </form>
+             
+        </div>
+        <div class="flex-column" *ngFor= "let value of taskList">
+            <div class="flex-row">
+                <p class="w-full text-grey-darkest" [ngClass]="{'strike': value.completed}">{{value.name}}</p>
+                <div>
+                    <button [disabled]="value.completed" class="hr-button done-button"  (click)="markDone(value)">Done</button>
+                    <button class="hr-button remove-button" (click)="removeTask(value)">Remove</button> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

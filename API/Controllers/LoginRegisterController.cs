@@ -92,7 +92,7 @@ namespace API.Controllers
             //getting the photo url when the user logs in 
             PhotoUrl = hruser.Photo.FirstOrDefault(x => x.isMain)?.Url,
             FullName = hruser.FullName,
-            Faculty = hruser.Faculty
+            Faculty = hruser.Faculty,
         };
     }
 

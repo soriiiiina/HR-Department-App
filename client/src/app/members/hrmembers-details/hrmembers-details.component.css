@@ -2,7 +2,7 @@ body{
     margin-top:5px;
     color: #1a202c;
     text-align: left;
-    background-color: #3f3a3a;    
+    background-color: #424242;    
     height: 500px;
 }
 
@@ -94,4 +94,33 @@ img {
     font-size: 20px;
   }
 
+  @keyframes fa-blink {
+    0% {opacity: 1;}
+    100% {opacity: 0.4;}
+  }
+  
+  .is-online {
+    animation: fa-blink 1.5s linear infinite;
+    color: rgb(1, 189, 42)
+  }
+
+  .message-button{
+    /* height: 45px; */
+    width: 150px; 
+    font-size: 15px;
+    text-align: center;
+    color: #f5f5f5;
+    text-align: center;
+    margin: auto;
+}
+
+.cancel-button {
+    /* height: 45px; */
+    width: 100px; 
+    font-size: 15px;
+    text-align: center;
+    color: #f5f5f5;
+    text-align: center;
+    margin: auto;
+}
   

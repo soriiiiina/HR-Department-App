@@ -1,318 +1,918 @@
 [
     {
-      "FullName": "Valentine",
-      "UserName": "Valentine",
-      "StatusOrQuote": "Hai pa",
+      "FullName": "Andreas Ittu",
+      "UserName": "Andreas",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "Hello!",
       "PhoneNumber": "(939) 511-2855",
       "Faculty": "Automation",
-      "DateOfBirth": "1961-04-27",
+      "DateOfBirth": "1995-04-27",
       "Created": "2019-06-25",
       "LastActive": "2020-05-09",
       "Photo": [
         {
-          "Url": "https://randomuser.me/api/portraits/women/45.jpg",
+          "Url": "./assets/userphoto1.jpg",
           "isMain": true
         }
       ]
     },
     {
-      "FullName": "David",
+      "FullName": "David Popovici",
       "UserName": "David",
-      "StatusOrQuote": "Hai pa",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "Salut, prieteni",
       "PhoneNumber": "(908) 562-2373",
       "Faculty": "Automation",
-      "DateOfBirth": "1977-01-24",
+      "DateOfBirth": "1995-01-24",
       "Created": "2020-04-18",
       "LastActive": "2020-06-03",
       "Photo": [
         {
-          "Url": "https://randomuser.me/api/portraits/women/89.jpg",
+          "Url": "./assets/userphoto2.jpg",
           "isMain": true
         }
       ]
     },
     {
-      "FullName": "Cora",
+      "FullName": "Cora Lin",
       "UserName": "Cora",
-      "StatusOrQuote": "Hai pa",      "PhoneNumber": "(961) 558-3181",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "I like potatoes",      
+      "PhoneNumber": "(961) 558-3181",
       "Faculty": "Automation",
-      "DateOfBirth": "1952-04-03",
+      "DateOfBirth": "1995-04-03",
       "Created": "2019-10-09",
       "LastActive": "2020-05-21",
       "Photo": [
         {
-          "Url": "https://randomuser.me/api/portraits/women/54.jpg",
+          "Url": "./assets/userphoto3.jpg",
           "isMain": true
         }
       ]
     },
     {
-      "FullName": "Sorina",
+      "FullName": "Sorina Suciu",
       "UserName": "Sorina",
-      "StatusOrQuote": "Hai pa",      "PhoneNumber": "(923) 469-2517",
+      "Email": "sorinasuciu14@gmail.com",
+      "StatusOrQuote": "Goodbye",      
+      "PhoneNumber": "(923) 469-2517",
       "Faculty": "Automation",
-      "DateOfBirth": "1954-01-18",
+      "DateOfBirth": "1995-01-18",
       "Created": "2019-12-02",
       "LastActive": "2020-05-31",
       "Photo": [
         {
-          "Url": "https://randomuser.me/api/portraits/women/19.jpg",
+          "Url": "./assets/userphoto55.jpg",
           "isMain": true
         }
       ]
     },
     {
-      "FullName": "Thompson",
-      "UserName": "Thompson",
-      "StatusOrQuote": "Hai pa",      "PhoneNumber": "(869) 464-3447",
-      "Faculty": "Computer",
-      "DateOfBirth": "1950-02-10",
+      "FullName": "Tudor Barbat",
+      "UserName": "Tudor",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "My hobbies: reading & music",      
+      "PhoneNumber": "(869) 464-3447",
+      "Faculty": "Computer Science",
+      "DateOfBirth": "1995-02-10",
       "Created": "2019-11-06",
       "LastActive": "2020-05-14",
       "Photo": [
         {
-          "Url": "https://randomuser.me/api/portraits/women/23.jpg",
+          "Url": "./assets/userphoto4.jpg",
           "isMain": true
         }
       ]
     },
     {
-      "FullName": "Mckenzie",
-      "UserName": "Mckenzie",
-      "StatusOrQuote": "Hai pa",      "PhoneNumber": "(916) 522-2292",
+      "FullName": "Adelina Agoston",
+      "UserName": "Adelina",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "Let's go for a swim",      
+      "PhoneNumber": "(916) 522-2292",
       "Faculty": "Architecture",
-      "DateOfBirth": "1977-03-07",
+      "DateOfBirth": "1996-03-07",
       "Created": "2020-03-13",
       "LastActive": "2020-05-07",
       "Photo": [
         {
-          "Url": "https://randomuser.me/api/portraits/women/24.jpg",
+          "Url": "./assets/userphoto5.jpg",
           "isMain": true
         }
       ]
     },
     {
-      "FullName": "Greer",
-      "UserName": "Greer",
-      "StatusOrQuote": "Hai pa",      "PhoneNumber": "(814) 544-2052",
-      "Faculty": "Computer",
-      "DateOfBirth": "1987-06-28",
+      "FullName": "Adela Popoescu",
+      "UserName": "Adela",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "I'm an intelectual",      
+      "PhoneNumber": "(814) 544-2052",
+      "Faculty": "Computer Science",
+      "DateOfBirth": "1996-06-28",
       "Created": "2019-01-23",
       "LastActive": "2020-06-08",
       "Photo": [
         {
-          "Url": "https://randomuser.me/api/portraits/women/48.jpg",
+          "Url": "./assets/userphoto8.jpg",
           "isMain": true
         }
       ]
     },
     {
-      "FullName": "Truta",
+      "FullName": "Truta Gabriela",
       "UserName": "Truta",
-      "StatusOrQuote": "Hai pa",      "PhoneNumber": "(981) 582-2746",
-      "Faculty": "Computer",
-      "DateOfBirth": "1960-10-10",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "HKnock, knock",      
+      "PhoneNumber": "(981) 582-2746",
+      "Faculty": "Computer Science",
+      "DateOfBirth": "1996-10-10",
       "Created": "2019-11-10",
       "LastActive": "2020-06-24",
       "Photo": [
         {
-          "Url": "https://randomuser.me/api/portraits/women/60.jpg",
+          "Url": "./assets/userphoto10.jpg",
           "isMain": true
         }
       ]
     },
     {
-      "FullName": "Schultz",
-      "UserName": "Schultz",
-      "StatusOrQuote": "Hai pa",      "PhoneNumber": "(959) 436-2944",
+      "FullName": "Adina Rus",
+      "UserName": "Adina",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "Fitness is my passion",      
+      "PhoneNumber": "(959) 436-2944",
       "Faculty": "Architecture",
       "DateOfBirth": "1997-09-05",
       "Created": "2019-03-03",
       "LastActive": "2020-05-31",
       "Photo": [
         {
-          "Url": "https://randomuser.me/api/portraits/women/66.jpg",
+          "Url": "./assets/userphoto45.jpg",
           "isMain": true
         }
       ]
     },
     {
-      "FullName": "Daniels",
-      "UserName": "Daniels",
-      "StatusOrQuote": "Hai pa",      "PhoneNumber": "(944) 462-2203",
+      "FullName": "Belean Mircea",
+      "UserName": "Mircea",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "I'm a vegetable",      
+      "PhoneNumber": "(944) 462-2203",
       "Faculty": "ETTI",
-      "DateOfBirth": "1995-11-05",
+      "DateOfBirth": "1997-11-05",
       "Created": "2020-01-22",
       "LastActive": "2020-05-22",
       "Photo": [
         {
-          "Url": "https://randomuser.me/api/portraits/women/23.jpg",
+          "Url": "./assets/userphoto6.jpg",
           "isMain": true
         }
       ]
     },
     {
-        "FullName": "Vale",
-        "UserName": "Vale",
-        "StatusOrQuote": "Hai pa",        "PhoneNumber": "(973) 472-2347",
+        "FullName": "Valentin Recea",
+        "UserName": "Valentin",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Good for you",        
+        "PhoneNumber": "(973) 472-2347",
         "Faculty": "ETTI",
-        "DateOfBirth": "1987-10-25",
+        "DateOfBirth": "1997-10-25",
         "Created": "2019-08-30",
         "LastActive": "2020-06-02",
         "Photo": [
           {
-            "Url": "https://randomuser.me/api/portraits/women/93.jpg",
+            "Url": "./assets/userphoto7.jpg",
             "isMain": true
           }
         ]
       },
       {
-        "FullName": "Nanette",
-        "UserName": "Nanette",
-        "StatusOrQuote": "Hai pa",        "PhoneNumber": "(979) 598-2099",
+        "FullName": "Alex Radoi",
+        "UserName": "Alex",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "I like pizza",        
+        "PhoneNumber": "(979) 598-2099",
         "Faculty": "Automation",
         "DateOfBirth": "1997-08-21",
         "Created": "2019-01-07",
         "LastActive": "2020-06-29",
         "Photo": [
           {
-            "Url": "https://randomuser.me/api/portraits/women/17.jpg",
+            "Url": "./assets/userphoto9.jpg",
             "isMain": true
           }
         ]
       },
       {
-        "FullName": "Sharon",
-        "UserName": "Sharon",
-        "StatusOrQuote": "Hai pa",        "PhoneNumber": "(924) 488-2891",
+        "FullName": "Alexia Iliescu",
+        "UserName": "Alexia",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Money, money, money",        
+        "PhoneNumber": "(924) 488-2891",
         "Faculty": "Construction",
-        "DateOfBirth": "1955-09-13",
+        "DateOfBirth": "1997-09-13",
         "Created": "2019-08-18",
         "LastActive": "2020-05-21",
         "Photo": [
           {
-            "Url": "https://randomuser.me/api/portraits/women/26.jpg",
+            "Url": "./assets/userphoto14.jpg",
             "isMain": true
           }
         ]
       },
       {
-        "FullName": "Virginia",
-        "UserName": "Virginia",
-        "StatusOrQuote": "Hai pa",        "PhoneNumber": "(851) 460-3352",
+        "FullName": "Erik Ruscanu",
+        "UserName": "Erik",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "TikTok is my obsession",        
+        "PhoneNumber": "(851) 460-3352",
         "Faculty": "ETTI",
-        "DateOfBirth": "1964-10-09",
+        "DateOfBirth": "1998-10-09",
         "Created": "2020-04-12",
         "LastActive": "2020-05-07",
         "Photo": [
           {
-            "Url": "https://randomuser.me/api/portraits/women/57.jpg",
+            "Url": "./assets/userphoto12.jpg",
             "isMain": true
           }
         ]
       },
       {
-        "FullName": "Rebecca",
-        "UserName": "Rebecca",
-        "StatusOrQuote": "Hai pa",        "PhoneNumber": "(817) 543-3513",
+        "FullName": "Andrada Bejinariu",
+        "UserName": "Andrada",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Astalavista",        
+        "PhoneNumber": "(817) 543-3513",
         "Faculty": "Construction",
-        "DateOfBirth": "1956-03-11",
+        "DateOfBirth": "1998-03-11",
         "Created": "2019-09-27",
         "LastActive": "2020-05-12",
         "Photo": [
           {
-            "Url": "https://randomuser.me/api/portraits/women/50.jpg",
+            "Url": "./assets/userphoto16.jpg",
             "isMain": true
           }
         ]
       },
       {
-        "FullName": "Gina",
-        "UserName": "Gina",
-        "StatusOrQuote": "Hai pa",        "PhoneNumber": "(885) 566-3485",
+        "FullName": "Andreea Ruscanu",
+        "UserName": "Andreea",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Who's this?",       
+        "PhoneNumber": "(885) 566-3485",
         "Faculty": "Construction",
-        "DateOfBirth": "1991-08-04",
+        "DateOfBirth": "1998-08-04",
         "Created": "2019-07-26",
         "LastActive": "2020-05-22",
         "Photo": [
           {
-            "Url": "https://randomuser.me/api/portraits/women/1.jpg",
+            "Url": "./assets/userphoto20.jpg",
             "isMain": true
           }
         ]
       },
       {
-        "FullName": "Corine",
-        "UserName": "Corine",
-        "StatusOrQuote": "Hai pa",        "PhoneNumber": "(808) 578-2529",
+        "FullName": "Ana Gavrila",
+        "UserName": "Ana",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Concerts & chill",        
+        "PhoneNumber": "(808) 578-2529",
         "Faculty": "Construction",
-        "DateOfBirth": "1956-05-28",
+        "DateOfBirth": "1998-05-28",
         "Created": "2019-06-30",
         "LastActive": "2020-06-25",
         "Photo": [
           {
-            "Url": "https://randomuser.me/api/portraits/women/16.jpg",
+            "Url": "./assets/userphoto24.jpg",
             "isMain": true
           }
         ]
       },
       {
-        "FullName": "Trisha",
-        "UserName": "Trisha",
-        "StatusOrQuote": "Hai pa",        "PhoneNumber": "(812) 579-2945",
-        "Faculty": "Computer",
-        "DateOfBirth": "1996-05-21",
+        "FullName": "Andrei Pop",
+        "UserName": "Andrei",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Electric Castle",        
+        "PhoneNumber": "(812) 579-2945",
+        "Faculty": "Computer Science",
+        "DateOfBirth": "1998-05-21",
         "Created": "2019-06-01",
         "LastActive": "2020-05-24",
         "Photo": [
           {
-            "Url": "https://randomuser.me/api/portraits/women/99.jpg",
+            "Url": "./assets/userphoto15.jpg",
             "isMain": true
           }
         ]
       },
       {
-        "FullName": "Cecilia",
-        "UserName": "Cecilia",
-        "StatusOrQuote": "Hai pa",        "PhoneNumber": "(868) 441-3180",
+        "FullName": "Beatrice Motoc",
+        "UserName": "Beatrice",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Not a cat",        
+        "PhoneNumber": "(868) 441-3180",
         "Faculty": "Construction",
-        "DateOfBirth": "1965-04-16",
+        "DateOfBirth": "1999-04-16",
         "Created": "2019-03-03",
         "LastActive": "2020-05-16",
         "Photo": [
           {
-            "Url": "https://randomuser.me/api/portraits/women/91.jpg",
+            "Url": "./assets/userphoto22.jpg",
             "isMain": true
           }
         ]
       },
       {
-        "FullName": "Meghan",
-        "UserName": "Meghan",
-        "StatusOrQuote": "Hai pa",        "PhoneNumber": "(922) 488-3071",
-        "Faculty": "Computer",
-        "DateOfBirth": "1990-06-02",
+        "FullName": "Bogdan Dan",
+        "UserName": "Bogdan",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Cat person",        
+        "PhoneNumber": "(922) 488-3071",
+        "Faculty": "Computer Science",
+        "DateOfBirth": "1999-06-02",
         "Created": "2020-03-19",
         "LastActive": "2020-05-27",
         "Photo": [
           {
-            "Url": "https://randomuser.me/api/portraits/women/10.jpg",
+            "Url": "./assets/userphoto17.jpg",
             "isMain": true
           }
         ]
       },
       {
-        "FullName": "Stefan",
-        "UserName": "stefan",
+        "FullName": "Irvin Cadar",
+        "UserName": "Irvin",
+        "Email": "useremail@gmail.com",
         "StatusOrQuote": "Thank you multumesc merci",
         "PhoneNumber": "(922) 488-3071",
         "Faculty": "ETTI",
-        "DateOfBirth": "1990-06-02",
+        "DateOfBirth": "1999-06-02",
         "Created": "2020-03-19",
         "LastActive": "2020-05-27",
         "Photo": [
           {
-            "Url": "https://randomuser.me/api/portraits/women/55.jpg",
+            "Url": "./assets/userphoto18.jpg",
+            "isMain": true
+          }
+        ]
+      },
+    {
+      "FullName": "Stefan Bratu",
+      "UserName": "Stefan",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "Cat person",
+      "PhoneNumber": "(939) 511-2855",
+      "Faculty": "Automation",
+      "DateOfBirth": "1999-04-27",
+      "Created": "2019-06-25",
+      "LastActive": "2020-05-09",
+      "Photo": [
+        {
+          "Url": "./assets/userphoto21.jpg",
+          "isMain": true
+        }
+      ]
+    },
+    {
+      "FullName": "Cata Alb",
+      "UserName": "Catalin",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "Buna ziua",
+      "PhoneNumber": "(908) 562-2373",
+      "Faculty": "Automation",
+      "DateOfBirth": "1999-01-24",
+      "Created": "2020-04-18",
+      "LastActive": "2020-06-03",
+      "Photo": [
+        {
+          "Url": "./assets/userphoto23.jpg",
+          "isMain": true
+        }
+      ]
+    },
+    {
+      "FullName": "Cezar Pantea",
+      "UserName": "Cezar",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "Hi there, I'm using the app",      
+      "PhoneNumber": "(961) 558-3181",
+      "Faculty": "Automation",
+      "DateOfBirth": "1999-04-03",
+      "Created": "2019-10-09",
+      "LastActive": "2020-05-21",
+      "Photo": [
+        {
+          "Url": "./assets/userphoto19.jpg",
+          "isMain": true
+        }
+      ]
+    },
+    {
+      "FullName": "Christine Ich",
+      "UserName": "Christine",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "Let's roll",      
+      "PhoneNumber": "(923) 469-2517",
+      "Faculty": "Automation",
+      "DateOfBirth": "1999-01-18",
+      "Created": "2019-12-02",
+      "LastActive": "2020-05-31",
+      "Photo": [
+        {
+          "Url": "./assets/userphoto25.jpg",
+          "isMain": true
+        }
+      ]
+    },
+    {
+      "FullName": "Octav Coca",
+      "UserName": "Octav",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "Efectiv",      
+      "PhoneNumber": "(869) 464-3447",
+      "Faculty": "Computer Science",
+      "DateOfBirth": "1999-02-10",
+      "Created": "2019-11-06",
+      "LastActive": "2020-05-14",
+      "Photo": [
+        {
+          "Url": "./assets/userphoto27.jpg",
+          "isMain": true
+        }
+      ]
+    },
+    {
+      "FullName": "Narcisa Lostun",
+      "UserName": "Narcisa",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "Misca musca",      
+      "PhoneNumber": "(916) 522-2292",
+      "Faculty": "Architecture",
+      "DateOfBirth": "1999-03-07",
+      "Created": "2020-03-13",
+      "LastActive": "2020-05-07",
+      "Photo": [
+        {
+          "Url": "./assets/userphoto26.jpg",
+          "isMain": true
+        }
+      ]
+    },
+    {
+      "FullName": "Cristi Dan",
+      "UserName": "Cristi",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "Never",      
+      "PhoneNumber": "(814) 544-2052",
+      "Faculty": "Computer Science",
+      "DateOfBirth": "1999-06-28",
+      "Created": "2019-01-23",
+      "LastActive": "2020-06-08",
+      "Photo": [
+        {
+          "Url": "./assets/userphoto31.jpg",
+          "isMain": true
+        }
+      ]
+    },
+    {
+      "FullName": "Maria Cucu",
+      "UserName": "Maria",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "Dreams are good",      
+      "PhoneNumber": "(981) 582-2746",
+      "Faculty": "Computer Science",
+      "DateOfBirth": "1999-10-10",
+      "Created": "2019-11-10",
+      "LastActive": "2020-06-24",
+      "Photo": [
+        {
+          "Url": "./assets/userphoto28.jpg",
+          "isMain": true
+        }
+      ]
+    },
+    {
+      "FullName": "Denisa Pop",
+      "UserName": "Denisa",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "Hustle",      
+      "PhoneNumber": "(959) 436-2944",
+      "Faculty": "Architecture",
+      "DateOfBirth": "1999-09-05",
+      "Created": "2019-03-03",
+      "LastActive": "2020-05-31",
+      "Photo": [
+        {
+          "Url": "./assets/userphoto29.jpg",
+          "isMain": true
+        }
+      ]
+    },
+    {
+      "FullName": "Diana Gocan",
+      "UserName": "Diana",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "Dream high",      
+      "PhoneNumber": "(944) 462-2203",
+      "Faculty": "ETTI",
+      "DateOfBirth": "2001-11-05",
+      "Created": "2020-01-22",
+      "LastActive": "2020-05-22",
+      "Photo": [
+        {
+          "Url": "./assets/userphoto30.jpg",
+          "isMain": true
+        }
+      ]
+    },
+    {
+        "FullName": "Eveline Buta",
+        "UserName": "Eveline",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Crustacee",        
+        "PhoneNumber": "(973) 472-2347",
+        "Faculty": "ETTI",
+        "DateOfBirth": "2001-10-25",
+        "Created": "2019-08-30",
+        "LastActive": "2020-06-02",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto32.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "Florena Mihaila",
+        "UserName": "Florena",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "I have an idea",        
+        "PhoneNumber": "(979) 598-2099",
+        "Faculty": "Automation",
+        "DateOfBirth": "2001-08-21",
+        "Created": "2019-01-07",
+        "LastActive": "2020-06-29",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto33.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "Giorgi Badiu",
+        "UserName": "Giorgi",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Meme lord",        
+        "PhoneNumber": "(924) 488-2891",
+        "Faculty": "Construction",
+        "DateOfBirth": "2001-09-13",
+        "Created": "2019-08-18",
+        "LastActive": "2020-05-21",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto34.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "Horea Popescu",
+        "UserName": "Horea",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "I want a tiger",        
+        "PhoneNumber": "(851) 460-3352",
+        "Faculty": "ETTI",
+        "DateOfBirth": "2001-10-09",
+        "Created": "2020-04-12",
+        "LastActive": "2020-05-07",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto37.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "Ilinca Serban",
+        "UserName": "Ilinca",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Sincerly, what",        
+        "PhoneNumber": "(817) 543-3513",
+        "Faculty": "Construction",
+        "DateOfBirth": "2001-03-11",
+        "Created": "2019-09-27",
+        "LastActive": "2020-05-12",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto35.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "Ionut Despau",
+        "UserName": "Despi",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": " Let's party",       
+        "PhoneNumber": "(885) 566-3485",
+        "Faculty": "Construction",
+        "DateOfBirth": "2001-08-04",
+        "Created": "2019-07-26",
+        "LastActive": "2020-05-22",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto38.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "George Miron",
+        "UserName": "Miron",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Latino music",        
+        "PhoneNumber": "(808) 578-2529",
+        "Faculty": "Construction",
+        "DateOfBirth": "2001-05-28",
+        "Created": "2019-06-30",
+        "LastActive": "2020-06-25",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto39.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "Lavinia Leiciu",
+        "UserName": "Lavinia",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Techno lover",        
+        "PhoneNumber": "(812) 579-2945",
+        "Faculty": "Computer Science",
+        "DateOfBirth": "2000-05-21",
+        "Created": "2019-06-01",
+        "LastActive": "2020-05-24",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto50.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "Malvin Abrudan",
+        "UserName": "Malvin",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Design is my passion",        
+        "PhoneNumber": "(868) 441-3180",
+        "Faculty": "Construction",
+        "DateOfBirth": "2000-04-16",
+        "Created": "2019-03-03",
+        "LastActive": "2020-05-16",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto47.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "Ama Bota",
+        "UserName": "ama",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Paint",        
+        "PhoneNumber": "(922) 488-3071",
+        "Faculty": "Computer Science",
+        "DateOfBirth": "2000-06-02",
+        "Created": "2020-03-19",
+        "LastActive": "2020-05-27",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto44.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "Andrei Maris",
+        "UserName": "Maris",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Powerpoint",
+        "PhoneNumber": "(922) 488-3071",
+        "Faculty": "ETTI",
+        "DateOfBirth": "2002-06-02",
+        "Created": "2020-03-19",
+        "LastActive": "2020-05-27",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto43.jpg",
+            "isMain": true
+          }
+        ]
+      },
+    {
+      "FullName": "Marusea Pop",
+      "UserName": "Maru",
+      "Email": "useremail@gmail.com",
+      "StatusOrQuote": "I don't have a photo",      
+      "PhoneNumber": "(944) 462-2203",
+      "Faculty": "ETTI",
+      "DateOfBirth": "2002-11-05",
+      "Created": "2020-01-22",
+      "LastActive": "2020-05-22",
+      "Photo": [
+        {
+          "Url": "./assets/userphoto46.jpg",
+          "isMain": true
+        }
+      ]
+    },
+    {
+        "FullName": "Daniel Mesesan",
+        "UserName": "daniell",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "I love jokes",        
+        "PhoneNumber": "(973) 472-2347",
+        "Faculty": "ETTI",
+        "DateOfBirth": "2002-10-25",
+        "Created": "2019-08-30",
+        "LastActive": "2020-06-02",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto49.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "Malina Rent",
+        "UserName": "Malina",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Avocado is the best",        
+        "PhoneNumber": "(979) 598-2099",
+        "Faculty": "Automation",
+        "DateOfBirth": "2002-08-21",
+        "Created": "2019-01-07",
+        "LastActive": "2020-06-29",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto13.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "Mara Bucur",
+        "UserName": "mara",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Imagine...",        
+        "PhoneNumber": "(924) 488-2891",
+        "Faculty": "Construction",
+        "DateOfBirth": "2002-09-13",
+        "Created": "2019-08-18",
+        "LastActive": "2020-05-21",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto40.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "Petre Dadun",
+        "UserName": "Dadun",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Backfired",        
+        "PhoneNumber": "(851) 460-3352",
+        "Faculty": "ETTI",
+        "DateOfBirth": "2001-10-09",
+        "Created": "2020-04-12",
+        "LastActive": "2020-05-07",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto53.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "Mihai Popescu",
+        "UserName": "Misu",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Music lover",        
+        "PhoneNumber": "(817) 543-3513",
+        "Faculty": "Construction",
+        "DateOfBirth": "2000-03-11",
+        "Created": "2019-09-27",
+        "LastActive": "2020-05-12",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto54.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "Monica Rus",
+        "UserName": "Monica",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "web developer",       
+        "PhoneNumber": "(885) 566-3485",
+        "Faculty": "Construction",
+        "DateOfBirth": "2001-08-04",
+        "Created": "2019-07-26",
+        "LastActive": "2020-05-22",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto48.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "Nicole Iris",
+        "UserName": "Nicole",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "just a student",        
+        "PhoneNumber": "(808) 578-2529",
+        "Faculty": "Construction",
+        "DateOfBirth": "2002-05-28",
+        "Created": "2019-06-30",
+        "LastActive": "2020-06-25",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto41.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "Nick Gatej",
+        "UserName": "Nick",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "I don't know english",        
+        "PhoneNumber": "(812) 579-2945",
+        "Faculty": "Computer Science",
+        "DateOfBirth": "2002-05-21",
+        "Created": "2019-06-01",
+        "LastActive": "2020-05-24",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto56.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "Norbert Sudor",
+        "UserName": "Norbi",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Hello",        
+        "PhoneNumber": "(868) 441-3180",
+        "Faculty": "Construction",
+        "DateOfBirth": "2002-04-16",
+        "Created": "2019-03-03",
+        "LastActive": "2020-05-16",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto58.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "Oita Vlad",
+        "UserName": "oita",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Gasolina",        
+        "PhoneNumber": "(922) 488-3071",
+        "Faculty": "Computer Science",
+        "DateOfBirth": "2000-06-02",
+        "Created": "2020-03-19",
+        "LastActive": "2020-05-27",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto57.jpg",
+            "isMain": true
+          }
+        ]
+      },
+      {
+        "FullName": "Sebastian Lancea",
+        "UserName": "sebi",
+        "Email": "useremail@gmail.com",
+        "StatusOrQuote": "Tis is me",
+        "PhoneNumber": "(922) 488-3071",
+        "Faculty": "ETTI",
+        "DateOfBirth": "2000-06-02",
+        "Created": "2020-03-19",
+        "LastActive": "2020-05-27",
+        "Photo": [
+          {
+            "Url": "./assets/userphoto59.jpg",
             "isMain": true
           }
         ]

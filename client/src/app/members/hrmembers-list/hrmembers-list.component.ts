@@ -22,28 +22,47 @@ export class HrmembersListComponent implements OnInit {
   //am observable of the member array for the non filtering part 
   
   searchText : any;
-  hrmembers!: HRUser;
+  hrmembers!: HRUser[];
   pagination!: PaginationInterface; 
   userParams!: UserParams;
-  membersWithRole!: Partial<HRUser>;
+  hruser!: HRUser;
+  membersWithRole!: Partial<HRUser[]>;
+  searchResult!: Member[];
+  teamMember!: HRUser[];
+  simpleMember!: HRUser[];
 
 
   constructor(private memberService: MembersService,private route: ActivatedRoute, 
       private loginregisterService: LoginregisterService, private adminService: AdminService) {   
     this.userParams = this.memberService.getUserParams();
+    this.loginregisterService.currentHRUser$.pipe(take(1)).subscribe(hruser => {
+      this.hruser = hruser!
+    });
   }
 
   ngOnInit(): void {
     this.loadHRMembers();
-    this.getUsersWithRoles();
+
+    if(this.hruser.roles.includes("Admin")){
+      this.getUsersWithRoles();
+    }
       }
 
   loadHRMembers() {
     this.memberService.setUserParams(this.userParams);
-    this.memberService.getMembers(this.userParams).subscribe(response => {
+    this.memberService.getHRMembers(this.userParams).subscribe(response => {
       this.hrmembers = response.result;
       this.pagination = response.pagination;
+      console.log(this.hrmembers);
     })
+  }
+
+  searchHRMembers(searchText: string) {
+    searchText 
+      ? this.memberService.searchTeamMembers(searchText).subscribe(response => {
+        this.searchResult = response;
+        }) 
+      : null;
   }
 
   getUsersWithRoles() {

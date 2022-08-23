@@ -9,6 +9,7 @@ using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Entities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
@@ -75,7 +76,6 @@ namespace API.Data
             //query to return all the users, except the currently logged in one 
             query = query.Where(u => u.UserName != userParams.CurrentUserName);
             //query for a specific faculty 
-            //query = query.Where(u => u.Faculty == userParams.Faculty);
             
             //AGE FILTER 
             var minDateOfBirth = DateTime.Today.AddYears(-userParams.MaxAge - 1);
@@ -98,6 +98,73 @@ namespace API.Data
                         userParams.PageNumber, userParams.PageSize);
 
         }
+        public async Task<PagedList<MemberDTO>> GetTeamMembersAsync(UserParams userParams)
+        {
+            var query = _dataContext.Users.AsQueryable();
+            
+            //NAME & FACULTY FILTERING
+            //query to return all the users, except the currently logged in one 
+            query = query.Where(u => u.UserName != userParams.CurrentUserName);
+            //query for a specific faculty 
+            
+            //AGE FILTER 
+            var minDateOfBirth = DateTime.Today.AddYears(-userParams.MaxAge - 1);
+            var maxDateOfBirth = DateTime.Today.AddYears(-userParams.minAge);
+            query = query.Where(u => u.DateOfBirth >= minDateOfBirth && u.DateOfBirth <= maxDateOfBirth);
 
+            var roleQuery = _dataContext.Roles.AsQueryable();
+            var teamMemberRoleId = roleQuery.Where(r => r.Name == "TeamMember").Select(r => r.Id).SingleOrDefault();
+            var adminRoleId = roleQuery.Where(r => r.Name == "Admin").Select(r => r.Id).SingleOrDefault();
+            
+
+            query = query.Where(u => u.UserRoles.Any(r => r.RoleId == teamMemberRoleId || r.RoleId == adminRoleId));
+
+
+
+            // SORTING 
+            query = userParams.OrderBy switch 
+            {   //case for "created"
+                "created" => query.OrderByDescending(u => u.Created),
+                //default case
+                _ => query.OrderByDescending(u => u.LastActive)
+            }; 
+
+
+            //creating the PagedList with the desired paramters (and returning it) 
+            return await PagedList<MemberDTO>.CreateAsync(query.ProjectTo<MemberDTO>(_mapper
+                    .ConfigurationProvider)
+                    .AsNoTracking(), 
+                        userParams.PageNumber, userParams.PageSize);
+
+        }
+
+        public async Task<IEnumerable<MemberDTO>> SearchByNameOrFaculty(string searchTerm)
+        {
+            return await _dataContext.Users
+            .Where(u => u.FullName.Contains(searchTerm) 
+                || u.Faculty.ToLower().Contains(searchTerm.ToLower()) 
+                || u.UserName.Contains(searchTerm))
+            .Include(r => r.UserRoles)
+            .Include(p => p.Photo)
+            .ProjectTo<MemberDTO>(_mapper.ConfigurationProvider)
+            .ToListAsync();
+        }
+
+        public async Task<IEnumerable<MemberDTO>> SearchTeamMembersByNameOrFaculty(string searchTerm)
+        {
+            var roleQuery = _dataContext.Roles.AsQueryable();
+            var teamMemberRoleId = roleQuery.Where(r => r.Name == "TeamMember").Select(r => r.Id).SingleOrDefault();
+            var adminRoleId = roleQuery.Where(r => r.Name == "Admin").Select(r => r.Id).SingleOrDefault();
+
+            return await _dataContext.Users
+            .Where(u => u.FullName.Contains(searchTerm) 
+                || u.Faculty.ToLower().Contains(searchTerm.ToLower()) 
+                || u.UserName.Contains(searchTerm))
+            .Where(u => u.UserRoles.Any(r => r.RoleId == teamMemberRoleId || r.RoleId == adminRoleId))
+            .Include(r => r.UserRoles)
+            .Include(p => p.Photo)
+            .ProjectTo<MemberDTO>(_mapper.ConfigurationProvider)
+            .ToListAsync();
+        }
     }
 }

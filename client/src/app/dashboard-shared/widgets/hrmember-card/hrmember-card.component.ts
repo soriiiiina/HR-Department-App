@@ -1,10 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Member } from 'src/app/_models/member';
-import { HRUser } from 'src/app/_models/user';
 import { LoginregisterService } from 'src/app/_services/loginregister.service';
 import { MembersService } from 'src/app/_services/members.service';
-import { take } from 'rxjs/operators';
+import { PresenceService } from 'src/app/_services/presence.service';
 
 @Component({
   selector: 'app-hrmember-card',
@@ -17,7 +16,8 @@ export class HrmemberCardComponent implements OnInit {
   @Input() hrmember!: Member; 
 
   
-  constructor(private memberService: MembersService, private toastr: ToastrService, private loginRegisterService: LoginregisterService) {
+  constructor(private memberService: MembersService, private toastr: ToastrService, 
+    private loginRegisterService: LoginregisterService, public presence: PresenceService) {
    }
 
   ngOnInit(): void {

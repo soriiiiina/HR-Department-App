@@ -3,6 +3,9 @@ import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { RolesModalComponent } from 'src/app/_modals/roles-modal/roles-modal.component';
 import { HRUser } from 'src/app/_models/user';
 import { AdminService } from 'src/app/_services/admin.service';
+import { LoginregisterService } from 'src/app/_services/loginregister.service';
+import { MembersService } from 'src/app/_services/members.service';
+import {take} from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-management',
@@ -11,10 +14,15 @@ import { AdminService } from 'src/app/_services/admin.service';
 })
 export class UserManagementComponent implements OnInit {
 
-  users!: Partial<HRUser>;
+  users!: Partial<HRUser[]>;
   bsModalRef!: BsModalRef;
+  isAdmin!: boolean;
 
-  constructor(private adminService: AdminService, private modalService: BsModalService) { }
+  constructor(private adminService: AdminService, private modalService: BsModalService, private memberService: MembersService, private loginRegisterService: LoginregisterService) { 
+    this.loginRegisterService.currentHRUser$.pipe(take(1)).subscribe(hruser => {
+      this.isAdmin = hruser ? hruser.roles.includes("Admin") : false;
+    });
+  }
 
   ngOnInit(): void {
     this.getUsersWithRoles();
@@ -22,9 +30,20 @@ export class UserManagementComponent implements OnInit {
 
   getUsersWithRoles() {
     this.adminService.getUsersWithRoles().subscribe(users => {
+      console.log(users);
       this.users = users!;
     })
-  } 
+  }
+  
+  deleteUser(user: HRUser) {
+    if(confirm(`Are you sure you want to delete user ${user.username}?`))
+    {
+      this.memberService.deleteAccount(user.username).subscribe(result => {
+        this.users = this.users.filter(u => u?.username != user.username);
+      });
+    }
+      
+  }
 
 
   openRolesModal(user: HRUser) {

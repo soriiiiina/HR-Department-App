@@ -26,7 +26,8 @@ namespace API.Helpers
             //get a hold of the user object
             var user = await repository.GetHRUserByIdAsync(hruserId);
 
-            user.LastActive = DateTime.Now;
+            if(user != null)
+                user.LastActive = DateTime.Now;
 
             await repository.SaveAllAsync();
         }

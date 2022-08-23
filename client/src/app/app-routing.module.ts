@@ -23,6 +23,7 @@ import { MemberMessageComponent } from './members/member-message/member-message.
 import { HRMemberDetailsResolver } from './_resolvers/hrmembers-details.resolver';
 import { AdminPannelComponent } from './admin/admin-pannel/admin-pannel.component';
 import { AdminGuard } from './_guards/admin.guard';
+import { LbgmembersListComponent } from './members/lbgmembers-list/lbgmembers-list.component';
 
 
 const routes: Routes = [
@@ -62,6 +63,10 @@ const routes: Routes = [
     {
       path: 'hrmembers',
       component: HrmembersListComponent
+    },
+    {
+      path: 'lbgmembers',
+      component: LbgmembersListComponent
     },
     {
       path: 'admin',

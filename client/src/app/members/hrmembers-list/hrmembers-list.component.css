@@ -3,9 +3,16 @@
 body{
     background-color:purple;
 }
+
+.form-age {
+    height: 30px;
+    width: 45px;
+}
+
 .form-inputs{
     position:relative;
 }
+
 .form-inputs .form-control{
     height:45px; 
 }
@@ -18,7 +25,7 @@ body{
 .form-inputs i{
     position:absolute;
     right:10px;
-    top:15px;
+    top:10px;
 }
 
 .shop-bag{
@@ -40,3 +47,23 @@ body{
 .pagination-selection, pagination {
     color:purple;
 }
+
+.btn-dark, .btn-outline-dark, .btn-outline-light {
+    width: 100px; 
+    font-size: 15px;
+    text-align: center;
+    color: #f5f5f5;
+    text-align: center;
+    margin-top: 4px;
+  }
+
+.age-filter{
+    padding: 5px;
+}
+
+.div-group {
+    display: flex;
+    flex-wrap: auto;
+}
+
+

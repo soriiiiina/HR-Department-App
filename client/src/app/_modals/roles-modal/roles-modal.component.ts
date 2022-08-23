@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { HRUser } from 'src/app/_models/user';
+import { LoginregisterService } from 'src/app/_services/loginregister.service';
+import {take} from 'rxjs/operators';
 
 
 @Component({
@@ -14,9 +16,13 @@ export class RolesModalComponent implements OnInit {
   @Input() updateSelectedRoles = new EventEmitter();
   user!: HRUser;
   roles: any[] = [];
+  isAdmin!: boolean;
 
-
-  constructor(public bsModalRef: BsModalRef) { }
+  constructor(public bsModalRef: BsModalRef, private loginRegisterService: LoginregisterService) {
+    this.loginRegisterService.currentHRUser$.pipe(take(1)).subscribe(hruser => {
+      this.isAdmin = hruser ? hruser.roles.includes("Admin") : false;
+    });
+   }
 
   ngOnInit(): void {
   }

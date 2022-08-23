@@ -15,9 +15,10 @@ img {
     border-radius: 50%;
 }
 
-.bi-bookmark-heart-fill, .bi-bookmark-plus-fill, .bi-messenger {
+ .fa-heartbeat, .fa-comments, .fa-user {
     vertical-align: middle;
     margin-right: 10px;
+    margin-left: 5px;
     font-size: 20px;
 }
 

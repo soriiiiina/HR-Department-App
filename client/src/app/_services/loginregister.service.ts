@@ -4,6 +4,7 @@ import { ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { HRUser } from '../_models/user';
+import { PresenceService } from './presence.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class LoginregisterService {
   private currentHRUserSource = new ReplaySubject<HRUser | null>(1);
   currentHRUser$ = this.currentHRUserSource.asObservable();
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient, private presence: PresenceService) { }
 
   login(model: any) {
     //we are sending up the model that contains the user and the password & persisteing the login
@@ -27,6 +28,7 @@ export class LoginregisterService {
         if(hruser){
           //the data will remain in the localStorage of the browser
           this.setCurrentHRUser(hruser);
+          this.presence.createHubConnection(hruser);
         }
       })
     )
@@ -54,6 +56,7 @@ export class LoginregisterService {
       map((hruser: any) => {
         if (hruser) {
           this.setCurrentHRUser(hruser);
+          this.presence.createHubConnection(hruser);
         }
       //returning the HRUSer object --> in order to see it in the console; not mandatory 
       return hruser; 

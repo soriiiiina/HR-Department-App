@@ -59,10 +59,6 @@ export class ProfileEditComponent implements OnInit {
     })
   }
 
-  deleteAccount (username: string) {
-    this.memberService.deleteAccount(username).subscribe(data => {
-      console.log("THIS IS THE DATA: " + data)
-    })
-    }
+
 }
 

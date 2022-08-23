@@ -56,6 +56,37 @@ namespace API.Controllers
 
             return Ok(hrusers);
         }
+        
+        [HttpGet("team-members")]
+        public async Task<ActionResult<IEnumerable<MemberDTO>>> GetTeamMembers([FromQuery] UserParams userParams)
+        {
+            var hruser = await _hruserRepository.GetHRUserByUsernameAsync(User.GetUsername());
+
+            userParams.CurrentUserName = hruser.UserName;
+
+            if (string.IsNullOrEmpty(userParams.Faculty))
+                // userParams.Faculty = hruser.Faculty;
+                userParams.Faculty = hruser.Faculty;
+
+            var hrusers = await _hruserRepository.GetTeamMembersAsync(userParams);
+
+            Response.AddPaginationHeader(hrusers.CurrentPage, hrusers.PageSize,
+                hrusers.TotalCount, hrusers.TotalPages);
+
+            return Ok(hrusers);
+        }
+
+        [HttpGet("search/{searchTerm}")]
+        public async Task<ActionResult<IEnumerable<MemberDTO>>> SearchByNameOrFaculty(string searchTerm)
+        {
+            return Ok(await _hruserRepository.SearchByNameOrFaculty(searchTerm));
+        }
+
+        [HttpGet("team-members/search/{searchTerm}")]
+        public async Task<ActionResult<IEnumerable<MemberDTO>>> SearchTeamMembersByNameOrFaculty(string searchTerm)
+        {
+            return Ok(await _hruserRepository.SearchTeamMembersByNameOrFaculty(searchTerm));
+        }
 
         //endpoint to get a specific user by username --> we can specify a root parameter 
         [HttpGet("{username}", Name = "GetUser")]
@@ -63,6 +94,8 @@ namespace API.Controllers
         {
             return await _hruserRepository.GetMemberAsync(username);
         }
+
+        
 
 
         [HttpPut]
@@ -166,30 +199,20 @@ namespace API.Controllers
         }
 
 
-        [HttpPost("user-delete/{username}")]
+        [HttpDelete("user-delete/{username}")]
         public async Task<ActionResult> DeleteHRUser(string username)
         {
             //getting the user based on the username 
-            var user = await _userManeger.FindByNameAsync(username);
+            var user = await _hruserRepository.GetHRUserByUsernameAsync(username);
+            
 
-            if(user != null) 
-            {
+            if(user != null && user.UserName != "admin") 
+            {   
                 await _userManeger.DeleteAsync(user);
                 return Ok();
             }
 
             return BadRequest("IT FAILED");
-
-            // //verifying that the user is the currently logged in user 
-            // if (username != user.UserName) return BadRequest("You are not allowed to delete");
-
-            // if (user == null) return BadRequest("There is no user");
-
-            // //delete user 
-            // await _userManeger.DeleteAsync(user);
-
-            // return Ok();
-
         }
     }
 }

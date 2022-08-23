@@ -34,7 +34,7 @@ namespace API.Extensions
                     
             //Authentication middleware
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options => {
+             .AddJwtBearer(options => {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
@@ -44,12 +44,30 @@ namespace API.Extensions
                     //the audience is the angular app 
                     ValidateAudience = false
                 };
+
+                options.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context => 
+                    {
+                        var accessToken = context.Request.Query["access_token"];
+
+                        var path = context.HttpContext.Request.Path;
+
+                        if(!string.IsNullOrEmpty(accessToken) && 
+                            path.StartsWithSegments("/hubs"))
+                        {
+                            context.Token = accessToken;
+                        }
+
+                        return Task.CompletedTask;
+                    }
+                };
             });
 
             //AUTHORIZATION - NEW POLICIES
             services.AddAuthorization(options => {
                 options.AddPolicy("RequiredAdminRole", policy => policy.RequireRole("Admin"));
-                options.AddPolicy("ModeratePhotoRole", policy => policy.RequireRole("Admin", "TeamMember"));
+                options.AddPolicy("RequiredModeratorRole", policy => policy.RequireRole("Admin", "TeamMember"));
             });
 
             return services;

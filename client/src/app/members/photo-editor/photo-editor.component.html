@@ -1,10 +1,14 @@
 <h1 class="fw-light text-center text-lg-start mt-4 mb-0">Current profile picture</h1>
 <br>
-<div *ngFor="let photo of hrmember!.photo">
-    <div *ngIf="photo.isMain == true">
-        <img class="rounded-circle" src="{{photo.url}}" alt="Photo does not work">
+<div *ngIf="hrmember.photo">
+    <div *ngFor="let photo of hrmember!.photo ">
+        <div *ngIf="photo.isMain == true">
+            <img class="rounded-circle" src="{{photo.url || './assets/user.png'}}" alt="Photo does not work">
+        </div>
     </div>
 </div>
+
+
 
 
 <br><br>

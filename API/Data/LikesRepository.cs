@@ -21,17 +21,17 @@ namespace API.Data
         }
 
         //finds an individual like
-        public async Task<HRUserLike> GetUserLike(int sourceUserId, int likedUserId)
+        public async Task<HRUserAppreciation> GetUserLike(int sourceUserId, int likedUserId)
         {
-            return await _dataContext.Likes.FindAsync(sourceUserId, likedUserId);
+            return await _dataContext.Appreciation.FindAsync(sourceUserId, likedUserId);
         }
         
         //a list of users that the user has liked (userId will be the source user)
         //a list of users that liked the currently logged in user (userId will be the oppsotie of source user)
-        public async Task<PagedList<LikeDTO>> GetUserLikes(LikesParams likesParams)
+        public async Task<PagedList<HRUserAppreciationDTO>> GetUserLikes(LikesParams likesParams)
         {
             var users = _dataContext.Users.OrderBy(u => u.UserName).AsQueryable();
-            var likes = _dataContext.Likes.AsQueryable();
+            var likes = _dataContext.Appreciation.AsQueryable();
 
             //the users that the currently logged in user has liked
             if (likesParams.Predicate == "liked")
@@ -47,7 +47,7 @@ namespace API.Data
                 users = likes.Select(like => like.SourceUser);
             }
 
-            var likedUsers = users.Select(user => new LikeDTO
+            var likedUsers = users.Select(user => new HRUserAppreciationDTO
             {   //manually mapping 
                 Username = user.UserName,
                 FullName = user.FullName,
@@ -59,7 +59,7 @@ namespace API.Data
             });
 
             //returning a PagedList
-            return await PagedList<LikeDTO>.CreateAsync(likedUsers, 
+            return await PagedList<HRUserAppreciationDTO>.CreateAsync(likedUsers, 
                 likesParams.PageNumber, likesParams.PageSize);
         }
         

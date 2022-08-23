@@ -10,8 +10,8 @@ namespace API.Helpers
 
         public string CurrentUserName { get; set; }
         public string Faculty { get; set; } 
-        public int minAge { get; set; } = 14;
-        public int MaxAge { get; set; } = 150;
+        public int minAge { get; set; } = 18;
+        public int MaxAge { get; set; } = 60;
 
         public string OrderBy { get; set; } = "LastActive";
     }

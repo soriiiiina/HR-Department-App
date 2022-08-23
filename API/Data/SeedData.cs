@@ -50,7 +50,7 @@ namespace API.Data
 
             var admin = new HRUser
             {
-                UserName = "admin"
+                UserName = "admin",
             };
 
             await userManager.CreateAsync(admin, "pa");

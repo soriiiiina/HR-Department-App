@@ -18,9 +18,9 @@ namespace Entities
 
         //for the like feature 
         //users liked by the currently loged in user
-        public ICollection<HRUserLike> LikedByUsers { get; set; }
+        public ICollection<HRUserAppreciation> LikedByUsers { get; set; }
         //users that the currently loged in user likes
-        public ICollection<HRUserLike> LikedUsers { get; set; }
+        public ICollection<HRUserAppreciation> LikedUsers { get; set; }
 
         //for the messages feature
         public ICollection<Message> MessagesSent { get; set; }

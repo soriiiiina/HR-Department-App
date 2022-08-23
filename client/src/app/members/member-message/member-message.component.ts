@@ -19,14 +19,13 @@ export class MemberMessageComponent implements OnInit {
   //get access to the messageform from the html 
   @ViewChild('messageForm') messageForm!: NgForm;
 
-  constructor(private messageService: MessageService) { }
+  constructor(public messageService: MessageService) { }
 
   ngOnInit(): void {
   }
 
   sendMessage() {
-    this.messageService.sendMessage(this.username, this.messageContent).subscribe(message => {
-      this.messages.push(message);
+    this.messageService.sendMessage(this.username, this.messageContent).then(() => {
       this.messageForm.reset();
     })
   }

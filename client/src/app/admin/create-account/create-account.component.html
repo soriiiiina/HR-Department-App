@@ -1,0 +1,77 @@
+<div class="container py-5 h-200">
+
+    <div class="row d-flex justify-content h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="card bg-dark text-white" style="border-radius: 2rem;">
+                <div class="card-body p-5 text-left">
+                    <div class="mb-md-5 mt-md-4 pb-5">
+
+                        <h2 class="fw-bold mb-2 text-uppercase">Create account for a new user</h2>
+                        <p class="text-white-50 mb-1">Please enter the requested data below in order to create e new account.</p>
+                        <p class="text-white-50 mb-1">After creating the account, provide the username & password to the new user.</p>
+                        <p class="text-white-50 mb-1">The user can add a photo afterwards.</p>
+                        <p class="text-warning mb-3">You will be disconnected from your account and connected automatically to the new account.</p>
+
+                        <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register()"
+                            class="form-inline mt-2 mt-md-0" autocomplete="off">
+
+                            <!-- INPUTS FOR THE REGISTRATION FORM -->
+                            <app-text-inputs [formControl]='registerForm.controls["username"]' [label]='"Username"'>
+                            </app-text-inputs>
+
+                            <app-text-inputs [formControl]='registerForm.controls["fullName"]' [label]='"Full Name"'>
+                            </app-text-inputs>
+
+                            <app-text-inputs [formControl]='registerForm.controls["email"]' [label]='"Email"'>
+                            </app-text-inputs>
+
+                            <app-text-inputs [formControl]='registerForm.controls["dateOfBirth"]'
+                                [label]='"Date of Birth"' [type]='"date"'>
+                            </app-text-inputs>
+
+                            <app-text-inputs [formControl]='registerForm.controls["phoneNumber"]'
+                                [label]='"Phone Number"'>
+                            </app-text-inputs>
+
+                            <app-text-inputs [formControl]='registerForm.controls["faculty"]' [label]='"Faculty"'>
+                            </app-text-inputs>
+
+                            <app-text-inputs [formControl]='registerForm.controls["statusOrQuote"]'
+                                [label]='"Status Or Quote"'>
+                            </app-text-inputs>
+
+                            <app-text-inputs [formControl]='registerForm.controls["password"]' [label]='"Password"'
+                                [type]='"password"'>
+                            </app-text-inputs>
+
+                            <app-text-inputs [formControl]='registerForm.controls["confirmPassword"]'
+                                [label]='"Confirm Password"' [type]='"password"'>
+                            </app-text-inputs>
+
+                            <!-- ERRORS -->
+                            <div class="row" *ngIf="validationErrors.length > 0">
+                                <ul class="text-danger">
+                                    <li *ngFor="let error of validateErrors">
+                                        {{error}}
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="form-group text-center">
+                                <button [disabled]="!registerForm.valid" type="submit"
+                                    class="btn btn-outline-light btn-lg px-2 mr-1">Create new account
+                                </button>
+
+                                <button type="button" class="btn btn-outline-light btn-lg px-2"
+                                    routerLinkActive="list-item-active" routerLink="/dashboard">Cancel
+                                </button>
+                            </div>
+
+                        </form>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

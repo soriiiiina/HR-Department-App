@@ -1,23 +1,30 @@
 <div class="container mt-3">
   <div class="row mb-4">
-    <div class="btn-group col-4" name="container">
+    <div class="col-sm-4">
+      <div class="btn-group float-left" name="container">
         <button 
-          class="btn btn-primary" 
+          class="btn btn-dark btn-sm px-2" 
           btnRadio='Unread' 
           [(ngModel)]="container" 
           (click)="loadMessages()">
           <i class="fa fa-envelope"></i> Unread
           
         </button>
-        <button class="btn btn-primary" btnRadio='Inbox' [(ngModel)]="container" 
-            (click)="loadMessages()">
-            <i class="fa fa-envelope-open"></i> Inbox
+        <button 
+          class="btn btn-dark btn-sm px-3" 
+          btnRadio='Inbox' 
+          [(ngModel)]="container" 
+          (click)="loadMessages()">
+          <i class="fa fa-envelope-open"></i> Inbox
         </button>
-        <button class="btn btn-primary" btnRadio='Outbox' [(ngModel)]="container" 
+
+        <button class="btn btn-dark btn-sm px-2" btnRadio='Outbox' [(ngModel)]="container" 
             (click)="loadMessages()">
-            <i class="fa fa-paper-plane"></i> Outbox
+            <span class="fa fa-paper-plane"></span> Outbox
         </button>
     </div>
+    </div>
+   
 </div>
 </div>
 

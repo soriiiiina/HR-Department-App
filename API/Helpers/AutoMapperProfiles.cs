@@ -18,8 +18,9 @@ namespace API.Helpers
                 .ForMember(destination => destination.PhotoUrl,
                 options => options.MapFrom(source => source.Photo.FirstOrDefault(x => x.isMain).Url))
                 .ForMember(destination => destination.Age, 
-                options => options.MapFrom(source => source.DateOfBirth.CalculateAge()));
-
+                options => options.MapFrom(source => source.DateOfBirth.CalculateAge()))
+                .ForMember(destination => destination.Roles,
+                options => options.MapFrom(source => source.UserRoles.Select(r => r.Role.ToString())));
             CreateMap<HRUserPhoto, PhotoDTO>();
             CreateMap<MemberUpdateDTO, HRUser>();
             CreateMap<RegisterDTO, HRUser>();
@@ -29,6 +30,7 @@ namespace API.Helpers
                     src.Sender.Photo.FirstOrDefault(x => x.isMain).Url))
                 .ForMember(dest => dest.RecieverPhotoUrl, options => options.MapFrom(src => 
                     src.Reciever.Photo.FirstOrDefault(x => x.isMain).Url));
+            CreateMap<DateTime, DateTime>().ConvertUsing(date => DateTime.SpecifyKind(date, DateTimeKind.Utc));
         }
     }
 }

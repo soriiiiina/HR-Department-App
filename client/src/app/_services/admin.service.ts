@@ -12,8 +12,7 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   getUsersWithRoles() {
-
-    return this.http.get<Partial<HRUser>>(this.baseUrl + 'admin/users-with-roles');
+    return this.http.get<Partial<HRUser[]>>(this.baseUrl + 'admin/users-with-roles');
   }
 
   //method to update roles

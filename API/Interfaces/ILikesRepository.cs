@@ -12,14 +12,14 @@ namespace API.Interfaces
     public interface ILikesRepository
     {   
          //finds an individual like
-        Task<HRUserLike> GetUserLike(int sourceUserId, int likedUserId);
+        Task<HRUserAppreciation> GetUserLike(int sourceUserId, int likedUserId);
 
         //a list of users that the current user has liked
         Task<HRUser> GetUserWithLikes(int userId);
 
         //predicate - are we looking for a list of users that have been liked or liked by? 
      
-        Task<PagedList<LikeDTO>> GetUserLikes(LikesParams likesParams); 
+        Task<PagedList<HRUserAppreciationDTO>> GetUserLikes(LikesParams likesParams); 
         
     }
 }

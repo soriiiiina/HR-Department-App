@@ -38,7 +38,7 @@ namespace API.Middleware
                 httpcontext.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
 
                 var response = _environment.IsDevelopment()
-                    //if we are in fevelopment mode we get a lot of info about the error
+                    //if we are in development mode we get a lot of info about the error
                     ? new ApiExceptions(httpcontext.Response.StatusCode, ex.Message, ex.StackTrace?.ToString())
                     //is we are not in development mode, we dont get so many info
                     : new ApiExceptions(httpcontext.Response.StatusCode, "Internal Server Error");

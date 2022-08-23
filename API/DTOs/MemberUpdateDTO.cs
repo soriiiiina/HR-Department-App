@@ -12,6 +12,7 @@ namespace API.DTOs
         public string fullName { get; set; }
         public string phoneNumber { get; set; }
         public string faculty { get; set; }
+        public string email { get; set; }
         public string statusOrQuote { get; set; }
     }
 }

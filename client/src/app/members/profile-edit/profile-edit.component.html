@@ -62,7 +62,7 @@
                                         <h6 class="mb-0">Email</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <input type="text" class="form-control" value="to be implemented">
+                                        <input type="text" class="form-control" [(ngModel)]="hrmember.email" name="email">
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -91,8 +91,7 @@
                                             name="statusOrQuote">
                                     </div>
                                 </div>
-                                <button class="btn btn-danger button-delete" (click)="deleteAccount(hrmember.username)">Delete Account
-                                </button>
+                                
                                 <div class="alert alert-info" *ngIf="editForm.dirty">
                                     <strong>Information: </strong> You have made changes. Any unsaved changes will be
                                     lost
@@ -102,7 +101,6 @@
                         </div>
                     </div>
                 </form>
-               
             </div>
         </div>
     </div>

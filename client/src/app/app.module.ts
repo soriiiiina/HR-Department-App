@@ -25,7 +25,6 @@ import { TimeagoModule } from 'ngx-timeago';
 import { ToolsModuleModule } from './dashboard-tools/tools-module.module';
 import {TabsModule} from 'ngx-tabset';
 import { AdminPannelComponent } from './admin/admin-pannel/admin-pannel.component';
-import { HasRoleDirective } from './_directives/has-role.directive';
 import { UserManagementComponent } from './admin/user-management/user-management.component';
 import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
@@ -33,7 +32,10 @@ import { RolesModalComponent } from './_modals/roles-modal/roles-modal.component
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { FlatpickrModule } from 'angularx-flatpickr';
-import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { CreateAccountComponent } from './admin/create-account/create-account.component';
+import { LbgmembersListComponent } from './members/lbgmembers-list/lbgmembers-list.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,9 @@ import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
     UserManagementComponent,
     PhotoManagementComponent,
     RolesModalComponent,
+    CalendarComponent,
+    CreateAccountComponent,
+    LbgmembersListComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +62,7 @@ import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     BsDropdownModule.forRoot(),
     ModalModule.forRoot(),
+    CommonModule,
 
     DashboardModule,
     DashboardSharedModule,
@@ -77,7 +83,7 @@ import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
       useFactory: adapterFactory,
     }),
     FlatpickrModule.forRoot(),
-    NgbModule,
+    NgbModalModule
   ],
   exports: [
     DashboardModule,
@@ -86,7 +92,8 @@ import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
     TimeagoModule,
     ToolsModuleModule,
     TabsModule,
-    ModalModule
+    ModalModule,
+    CommonModule
   ],
   
   providers: [

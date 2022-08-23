@@ -6,6 +6,7 @@ export interface Member {
   id: number
   fullName: string
   username: string
+  email: string
   photoUrl: string
   statusOrQuote: string
   phoneNumber: string

@@ -1,15 +1,23 @@
 <div class="row" *ngIf="users">
-    <table class="table mt-4">
-        <tr class="mt-4">
-            <th style="width:30%">Username</th>
-            <th style="width:40%">Active Roles</th>
-            <th style="width:30%"></th>
-        </tr>
-        <tr *ngFor="let user of users">
-            <td>{{user.username}}</td>
-            <td>{{user.roles}}</td>
-            <td><button *ngIf="users" (click)="openRolesModal(user)" class="btn btn-info">Edit Roles</button></td>
-        </tr>
+    <table class="table table-striped table-dark table-hover mt-4">
+        <thead class="thead mt-5">
+            <tr class="mt-4">
+                <th scope="col">Username</th>
+                <th scope="col">Active Roles</th>
+                <th scope="col">Available Options</th>
+            </tr>
+
+        </thead>
+         <tbody>
+            <tr *ngFor="let user of users" class="mt-2">
+                <td>{{user.username}}</td>
+                <td>{{user.roles}}</td>
+                <td *ngIf="users">
+                    <button  (click)="openRolesModal(user)" class="btn btn-info">Edit Roles</button>
+                    <button [disabled]='user.username=="admin"' *appHasRole='["Admin"]' (click)="deleteUser(user)" class="btn btn-danger">Delete User</button>
+                </td>
+            </tr>
+         </tbody>
+        
     </table>
 </div>
-

@@ -4,17 +4,15 @@
 
 <div class="tab-panel">
     <tabset class="member-tabset">
-        <tab heading="User management" *appHasRole='["Admin"]'>
+        <tab  heading="User management" *appHasRole='["Admin", "TeamMember"]'>
             <div class="container">
                 <app-user-management></app-user-management>
             </div>
         </tab>
-        
-        <tab heading="Photo management" *appHasRole='["Admin", "TeamMember"]'>
+        <tab  heading="Create account for user" *appHasRole='["Admin", "TeamMember"]'>
             <div class="container">
-                <app-photo-management></app-photo-management>
+                <app-create-account></app-create-account>
             </div>
         </tab>
-        
     </tabset>
 </div>

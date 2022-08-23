@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TasksComponent } from './tasks/tasks.component';
-import { CalendarComponent } from './calendar/calendar.component';
 import { RecruitmentComponent } from './recruitment/recruitment.component';
 import { MessagesComponent } from './messages/messages.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TimeagoModule } from 'ngx-timeago';
 import { RouterModule } from '@angular/router';
 import { MatDividerModule } from '@angular/material/divider';
@@ -19,10 +18,10 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { DashboardSharedModule } from '../dashboard-shared/dashboard-shared.module';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
+
 @NgModule({
   declarations: [
     TasksComponent,
-    CalendarComponent,
     RecruitmentComponent,
     MessagesComponent
   ],
@@ -41,15 +40,17 @@ import { ButtonsModule } from 'ngx-bootstrap/buttons';
     TimeagoModule.forRoot(),
     RouterModule,
     DashboardSharedModule,
-    ButtonsModule.forRoot()
+    ButtonsModule.forRoot(),
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports: [
     TasksComponent,
-    CalendarComponent,
     RecruitmentComponent,
     MessagesComponent,
     TimeagoModule,
-    ButtonsModule
+    ButtonsModule,
+    CommonModule
 
   ]
 })

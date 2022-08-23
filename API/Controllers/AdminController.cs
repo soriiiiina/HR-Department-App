@@ -18,7 +18,7 @@ namespace API.Controllers
             _userManager = userManager;
         }
 
-        //[Authorize(Policy = "RequiredAdminRole")]
+        [Authorize(Policy = "RequiredModeratorRole")]
         [HttpGet("users-with-roles")]
         public async Task<ActionResult> GetUsersWithRoles()
         {

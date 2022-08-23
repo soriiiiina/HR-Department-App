@@ -14,35 +14,41 @@ namespace API.Data
         }
 
         //LIKE FEATURE
-        public DbSet<HRUserLike> Likes { get; set; }
+        public DbSet<HRUserAppreciation> Appreciation { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<Connection> Connections { get; set; }
+        public DbSet<Calendar> Calendar { get; set; }
+        public DbSet<Tasks> Tasks { get; set; }
 
-        //MESSAGES FEATURE
+       
 
-        //we to overrride a method inside dbcontext
+        //MESSAGES FEATUR
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
+            
+
             //LIKES FEATURE
-            modelBuilder.Entity<HRUserLike>() 
+            modelBuilder.Entity<HRUserAppreciation>() 
                 //creating a primary key for the HRUserLike table
                 .HasKey(key => new {key.SourceUSerId, key.LikedUserId});
 
             //translate: a source user can like many users 
-            modelBuilder.Entity<HRUserLike>()
+            modelBuilder.Entity<HRUserAppreciation>()
                 .HasOne(s => s.SourceUser)
                 .WithMany(l => l.LikedUsers)
                 .HasForeignKey(s => s.SourceUSerId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<HRUserLike>()
+            modelBuilder.Entity<HRUserAppreciation>()
                 .HasOne(s => s.LikedUser)
                 .WithMany(l => l.LikedByUsers)
                 .HasForeignKey(s => s.LikedUserId)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            //MESSAGES FEATURE - this wont have a key as the likes, the database will take care of that 
+            //MESSAGES FEATURE  
             modelBuilder.Entity<Message>()
                 .HasOne(q => q.Reciever)
                 .WithMany(b => b.MessagesReceived)

@@ -3,7 +3,7 @@
         <div class="col-lg-5 mb-4">
             <div class="card" style="width: 17rem;" *ngFor="let photo of hrmember!.photo">
                 <img src="{{photo.url}}" alt="{{hrmember.username}}" class="card-img-top">
-                <div class="card-body">
+                <div class="card-body" >
 
                     <button 
                         [disabled]="photo.isMain"

@@ -18,6 +18,7 @@ export class MembersService {
   baseUrl = environment.apiUrl;
   members: Member[] = [];
   memberCacheMap = new Map();
+  hrMemberCacheMap = new Map();
   hruser!: HRUser;
   userParams!: UserParams;
 
@@ -72,6 +73,36 @@ export class MembersService {
     }))
   }
 
+  getHRMembers(userParams: UserParams) {
+    //CACHING
+    // console.log(Object.values(userParams).join('-'));
+
+    //checking if the cache has the result of that query 
+    //the key will beObject.values(userParams).join('-') & the value will be the response 
+    var response = this.hrMemberCacheMap.get(Object.values(userParams).join('-'));
+
+    //if we have a response, we can return it
+    if(response) {
+      return of(response);
+    }
+
+    let params = getPaginationHeaders(userParams.pageNumber, userParams.pageSize);
+
+    params = params.append('minAge', userParams.mingAge.toString());
+    params = params.append('maxAge', userParams.maxAge.toString());
+    params = params.append('faculty', userParams.faculty);
+    params = params.append('orderBy', userParams.orderBy);
+
+    //we go to the api, return the members, if the query is identical to other query
+    //we will return from our cache (we wont make the same query to the database)
+    return getPaginatedResult<Member[]>(this.baseUrl + 'hrusers/team-members', params, this.http)
+    .pipe(map(response => {
+      //setting the key and the response; the key is the same as above
+      this.hrMemberCacheMap.set(Object.values(userParams).join('-'), response);
+      return response;
+    }))
+  }
+
   
   getMember(username: string) {
     //getting the member out of the lots of arrays -> flatten the response in an array of users
@@ -88,7 +119,16 @@ export class MembersService {
     return this.http.get<Member>(this.baseUrl + 'hrusers/' + username);
   }
 
+  searchMembers(searchTerm: string) {
+    return this.http.get<Member[]>(`${this.baseUrl}hrusers/search/${searchTerm}`);
+  }
+
+  searchTeamMembers(searchTerm: string) {
+    return this.http.get<Member[]>(`${this.baseUrl}hrusers/team-members/search/${searchTerm}`);
+  }
+
   updateMember(member: Member) {
+    console.log("Called");
     return this.http.put(this.baseUrl + 'hrusers', member).pipe(
       map(() => {
         //getting the member from the service by finiding the index 
@@ -122,9 +162,6 @@ export class MembersService {
 
   deleteAccount(username: string) 
   {
-    // confirm("Are you sure you want to delete your account?");
     return this.http.delete(this.baseUrl + 'hrusers/user-delete/' + username);
   }
-
-  
 }
