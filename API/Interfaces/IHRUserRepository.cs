@@ -9,6 +9,7 @@ namespace API.Interfaces
 {
     public interface IHRUserRepository
     {
+        Task<HRUser> GetHRUserByUsernameAsync(string username); 
         void Update(HRUser hruser);
 
         //saving all the changes 
@@ -18,7 +19,7 @@ namespace API.Interfaces
 
         //getting an user by id     
         Task<HRUser> GetHRUserByIdAsync(int id); 
-        Task<HRUser> GetHRUserByUsernameAsync(string username); 
+       
 
         //FOR THE MEMBER DTO??? 
         Task<PagedList<MemberDTO>> GetMembersAsync(UserParams userParams);
@@ -26,5 +27,6 @@ namespace API.Interfaces
         Task<MemberDTO> GetMemberAsync(string username);
         Task<IEnumerable<MemberDTO>> SearchByNameOrFaculty(string searchTerm);
         Task<IEnumerable<MemberDTO>> SearchTeamMembersByNameOrFaculty(string searchTerm);
+        Task<IEnumerable<MemberDTO>> getAllMembersAsync();
     }
 }

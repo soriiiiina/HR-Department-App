@@ -9,3 +9,17 @@
 table {
     width: 100%;
 }
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.pie-chart {
+    max-width: 45%;
+}
+
+.card-chart {
+    max-width: 20%;
+}

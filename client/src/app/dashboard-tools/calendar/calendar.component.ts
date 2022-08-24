@@ -74,8 +74,8 @@ export class CalendarComponent {
     { //2 day event
       start: startOfDay(new Date()),
       end: addDays(new Date(), 2),
-      title: 'Organizaitons Anniversary',
-      color: { ...colors.purple },
+      title: 'Updates Email',
+      color: { ...colors.yellow },
       actions: this.actions,
     },
     { //end of the month??

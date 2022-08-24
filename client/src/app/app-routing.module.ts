@@ -1,6 +1,5 @@
 import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CalendarComponent } from './calendar/calendar.component';
 import { MessagesComponent } from './dashboard-tools/messages/messages.component';
 import { RecruitmentComponent } from './dashboard-tools/recruitment/recruitment.component';
 import { TasksComponent } from './dashboard-tools/tasks/tasks.component';
@@ -24,6 +23,8 @@ import { HRMemberDetailsResolver } from './_resolvers/hrmembers-details.resolver
 import { AdminPannelComponent } from './admin/admin-pannel/admin-pannel.component';
 import { AdminGuard } from './_guards/admin.guard';
 import { LbgmembersListComponent } from './members/lbgmembers-list/lbgmembers-list.component';
+import { CalendarCommonModule } from 'angular-calendar';
+import { CalendarComponent } from './dashboard-tools/calendar/calendar.component';
 
 
 const routes: Routes = [

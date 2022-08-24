@@ -17,9 +17,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    //all of the methods inside the class will be protected with authorization
+
     [Authorize]
-    //the atributes are the same as for the BaseController class 
     public class HRUsersController : BaseController
     {
         //by using _dataContext we will have access to our database 
@@ -80,6 +79,12 @@ namespace API.Controllers
         public async Task<ActionResult<IEnumerable<MemberDTO>>> SearchByNameOrFaculty(string searchTerm)
         {
             return Ok(await _hruserRepository.SearchByNameOrFaculty(searchTerm));
+        }
+
+        [HttpGet("all")]
+        public async Task<ActionResult<IEnumerable<MemberDTO>>> GetAllMembers()
+        {
+            return Ok(await _hruserRepository.getAllMembersAsync());
         }
 
         [HttpGet("team-members/search/{searchTerm}")]

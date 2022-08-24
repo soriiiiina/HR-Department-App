@@ -14,5 +14,6 @@ namespace API.DTOs
         public string faculty { get; set; }
         public string email { get; set; }
         public string statusOrQuote { get; set; }
+        public DateTime DateOfBirth { get; set; }
     }
 }

@@ -1,5 +1,56 @@
-<div>
-    <h1>Salut</h1>
+<div class="row">
+    <div class="pie-chart" *ngIf="ageChartCalcOver">
+        <app-pie-chart  [data]="this.ageChart" title="Age Chart"></app-pie-chart>
+    </div>
+    
+    <div class="pie-chart" *ngIf="facultyChartCalcOver">
+        <app-pie-chart  [data]="this.facultyChart" title="Faculty Chart"></app-pie-chart>
+    </div>
+    
+</div>
+
+<br>
+
+<mat-divider></mat-divider>
+<br>
+
+<div class="row">
+    <div *ngIf="cardChartCalcOver" class="card-chart">
+        <app-card-chart 
+        [label]="memberCurrYear.label" 
+        [total]="memberCurrYear.total" 
+        [percentage]="memberCurrYear.percentage"
+        [data]="memberCurrYear.data"
+        [limit]="memberCurrYear.limit"
+        ></app-card-chart>
+    </div>
+    <div *ngIf="cardChartCalcOver" class="card-chart">
+        <app-card-chart
+        [label]="memberCurrMonth.label" 
+        [total]="memberCurrMonth.total" 
+        [percentage]="memberCurrMonth.percentage"
+        [data]="memberCurrMonth.data"
+        [limit]="memberCurrMonth.limit"
+        ></app-card-chart>
+    </div>
+    <div *ngIf="cardChartCalcOver" class="card-chart">
+        <app-card-chart
+        [label]="hrMemberCurrYear.label" 
+        [total]="hrMemberCurrYear.total" 
+        [percentage]="hrMemberCurrYear.percentage"
+        [data]="hrMemberCurrYear.data"
+        [limit]="hrMemberCurrYear.limit"
+        ></app-card-chart>
+    </div>
+    <div *ngIf="cardChartCalcOver" class="card-chart">
+        <app-card-chart
+        [label]="hrMemberCurrMonth.label" 
+        [total]="hrMemberCurrMonth.total" 
+        [percentage]="hrMemberCurrMonth.percentage"
+        [data]="hrMemberCurrMonth.data"
+        [limit]="hrMemberCurrMonth.limit"
+        ></app-card-chart>
+    </div>
 </div>
 
 <br>
@@ -8,17 +59,45 @@
 
 <br>
 
-<div>
-    <h2>la revedere</h2>
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="20px">
+    <div fxFlex="100">
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="members">
+
+                <!-- Position Column -->
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="fullName">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="faculty">
+                    <th mat-header-cell *matHeaderCellDef> Faculty </th>
+                    <td mat-cell *matCellDef="let element"> {{element.faculty}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="age">
+                    <th mat-header-cell *matHeaderCellDef> Age </th>
+                    <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+                aria-label="Select page of periodic elements">
+            </mat-paginator>
+        </div>
+    </div>
 </div>
-
-<br>
-
-<mat-divider></mat-divider>
-
-<br>
-
-<div>sorina e cool</div>
 
 
 

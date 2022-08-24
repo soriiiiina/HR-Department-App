@@ -17,6 +17,9 @@ import { MemberPhotoCardComponent } from './widgets/member-photo-card/member-pho
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import { TimeagoModule } from 'ngx-timeago';
 import { HasRoleDirective } from '../_directives/has-role.directive';
+import { PieChartComponent } from './widgets/pie-chart/pie-chart.component';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { CardChartComponent } from './widgets/card-chart/card-chart.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { HasRoleDirective } from '../_directives/has-role.directive';
     SidebarComponent,
     HrmemberCardComponent,
     MemberPhotoCardComponent,
-    HasRoleDirective
+    HasRoleDirective,
+    PieChartComponent,
+    CardChartComponent,
   ],
   imports: [
     CommonModule,
@@ -40,6 +45,7 @@ import { HasRoleDirective } from '../_directives/has-role.directive';
     RouterModule,
     PaginationModule.forRoot(),
     TimeagoModule.forRoot(),
+    HighchartsChartModule,
   ],
   exports: [
     TableComponent,
@@ -50,7 +56,9 @@ import { HasRoleDirective } from '../_directives/has-role.directive';
     MemberPhotoCardComponent,
     PaginationModule,
     TimeagoModule,
-    HasRoleDirective
+    HasRoleDirective,
+    PieChartComponent,
+    CardChartComponent
   ]
 })
 export class DashboardSharedModule { }

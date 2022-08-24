@@ -166,5 +166,14 @@ namespace API.Data
             .ProjectTo<MemberDTO>(_mapper.ConfigurationProvider)
             .ToListAsync();
         }
+
+        public async Task<IEnumerable<MemberDTO>> getAllMembersAsync()
+        {
+            return await _dataContext.Users
+            .Include(r => r.UserRoles)
+            .Include(p => p.Photo)
+            .ProjectTo<MemberDTO>(_mapper.ConfigurationProvider)
+            .ToListAsync();
+        }
     }
 }

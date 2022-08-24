@@ -16,6 +16,7 @@ export interface Member {
   lastActive: Date
   photo: Photo[]
   userRoles: Role[]
+  roles?: string[];
 }
 
 

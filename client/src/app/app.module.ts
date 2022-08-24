@@ -10,7 +10,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
-import { CalendarComponent } from './calendar/calendar.component';
 import { DashboardModule } from './dashboard/dashboard.module';
 import { MembersModuleModule } from './members/members-module.module';
 import { ToastrModule } from 'ngx-toastr';
@@ -36,6 +35,7 @@ import { CommonModule } from '@angular/common';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateAccountComponent } from './admin/create-account/create-account.component';
 import { LbgmembersListComponent } from './members/lbgmembers-list/lbgmembers-list.component';
+import { CalendarComponent } from './dashboard-tools/calendar/calendar.component';
 
 @NgModule({
   declarations: [
